@@ -19,5 +19,13 @@ module Aktenkoffer
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
     end
+
+    authentication_name = ENV.fetch('AUTHENTICATION_NAME', nil)
+    authentication_password = ENV.fetch('AUTHENTICATION_PASSWORD', nil)
+    config.authentication_options = {
+      name: authentication_name,
+      password: authentication_password,
+      unless: -> { authentication_name.blank? || authentication_password.blank? }
+    }
   end
 end
