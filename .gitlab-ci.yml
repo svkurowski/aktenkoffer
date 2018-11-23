@@ -1,0 +1,7 @@
+production:
+  stage: deploy
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=$HEROKU_PRODUCTION_APP --api-key=$HEROKU_PRODUCTION_API_KEY
+  only:
+  - master
