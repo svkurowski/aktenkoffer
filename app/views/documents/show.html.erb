@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @document.sender %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @document.recipient %>
+</p>
+
+<p>
+  <strong>Sent at:</strong>
+  <%= @document.sent_at %>
+</p>
+
+<p>
+  <strong>Received at:</strong>
+  <%= @document.received_at %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>

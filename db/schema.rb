@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_211206) do
+ActiveRecord::Schema.define(version: 2018_11_25_154458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -45,4 +45,18 @@ ActiveRecord::Schema.define(version: 2018_11_22_211206) do
     t.index ["name"], name: "index_contacts_on_name", unique: true
   end
 
+  create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.uuid "sender_id"
+    t.uuid "recipient_id"
+    t.date "sent_at"
+    t.date "received_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_documents_on_recipient_id"
+    t.index ["sender_id"], name: "index_documents_on_sender_id"
+  end
+
+  add_foreign_key "documents", "contacts", column: "recipient_id"
+  add_foreign_key "documents", "contacts", column: "sender_id"
 end
