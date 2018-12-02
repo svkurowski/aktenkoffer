@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Original file:</strong>
+  <% if @document.original_file.attached? %>
+    <%= link_to 'Click to download', @document.original_file, target: '_blank'  %>
+  <% end %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @document.title %>
 </p>
