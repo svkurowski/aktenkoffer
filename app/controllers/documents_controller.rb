@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    @documents = Document.all.includes(:recipient).includes(:sender)
   end
 
   # GET /documents/1

@@ -8,12 +8,12 @@
 
 <p>
   <strong>Sender:</strong>
-  <%= @document.sender %>
+  <%= @document.sender&.name %>
 </p>
 
 <p>
   <strong>Recipient:</strong>
-  <%= @document.recipient %>
+  <%= @document.recipient&.name %>
 </p>
 
 <p>
