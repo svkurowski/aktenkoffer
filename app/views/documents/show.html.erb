@@ -1,11 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Original file:</strong>
-  <% if @document.original_file.attached? %>
-    <%= link_to 'Click to download', @document.original_file, target: '_blank'  %>
-  <% end %>
-</p>
 
 <p>
   <strong>Title:</strong>
@@ -34,3 +28,15 @@
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
+
+
+<p>
+  <strong>Original file:</strong>
+</p>
+<% if @document.original_file.attached? %>
+  <div>
+    <object data="<%= url_for @document.original_file %>" type="application/pdf" class="embedded-document">
+      <p>This browser does not support embedding PDF files. <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.</p>
+    </object>
+  </div>
+<% end %>
