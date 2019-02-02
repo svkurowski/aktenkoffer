@@ -4,7 +4,10 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all.includes(:recipient).includes(:sender)
+    @documents = Document.all
+      .includes(:recipient)
+      .includes(:sender)
+      .order_by_acted_at
   end
 
   # GET /documents/1
