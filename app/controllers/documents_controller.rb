@@ -2,8 +2,7 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
-    @documents = Document.all
-      .includes(:recipient)
+    @documents = Document.includes(:recipient)
       .includes(:sender)
       .order_by_acted_at
   end
