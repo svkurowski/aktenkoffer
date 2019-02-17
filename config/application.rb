@@ -29,6 +29,9 @@ module Aktenkoffer
 
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
+
+      g.assets false
+      g.helper false
     end
 
     authentication_name = ENV.fetch('AUTHENTICATION_NAME', nil)
