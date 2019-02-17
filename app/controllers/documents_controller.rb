@@ -1,8 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
-  # GET /documents
-  # GET /documents.json
   def index
     @documents = Document.all
       .includes(:recipient)
@@ -10,22 +8,16 @@ class DocumentsController < ApplicationController
       .order_by_acted_at
   end
 
-  # GET /documents/1
-  # GET /documents/1.json
   def show
   end
 
-  # GET /documents/new
   def new
     @document = Document.new
   end
 
-  # GET /documents/1/edit
   def edit
   end
 
-  # POST /documents
-  # POST /documents.json
   def create
     @document = Document.new(document_params)
 
@@ -40,8 +32,6 @@ class DocumentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /documents/1
-  # PATCH/PUT /documents/1.json
   def update
     respond_to do |format|
       if @document.update(document_params)
@@ -54,8 +44,6 @@ class DocumentsController < ApplicationController
     end
   end
 
-  # DELETE /documents/1
-  # DELETE /documents/1.json
   def destroy
     @document.destroy
     respond_to do |format|
