@@ -10,6 +10,6 @@ class Document < ApplicationRecord
 
   def self.order_by_acted_at(dir = 'DESC')
     direction = ['ASC', 'DESC'].include?(dir) ? dir : 'DESC'
-    order("COALESCE(received_at, sent_at, created_at::date) #{direction}")
+    order("COALESCE(received_at, sent_at, #{self.table_name}.created_at::date) #{direction}")
   end
 end

@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<%= simple_form_for :query, url: documents_path, method: :get do |f| %>
+  <div class="form-group">
+    <%= f.input :query, placeholder: 'What are you looking for?', label: false, input_html: { name: :query, value: params['query'] }, class: 'form-control'  %>
+    <%= f.submit 'Search', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
 <h1>Documents</h1>
 
 <table class="table">
