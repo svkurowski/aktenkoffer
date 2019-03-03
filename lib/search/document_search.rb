@@ -37,7 +37,7 @@ module Search
       def filter_attributes(documents, params)
         params.keys.reduce(documents) do |result, attribute|
           query_method, filter_value = filter_query_for(params, attribute)
-          result = result.send(query_method, filter_value) if Document.respond_to?(query_method)
+          result = result.send(query_method, filter_value) if result.respond_to?(query_method)
           result
         end
       end
