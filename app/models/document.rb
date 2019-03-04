@@ -9,19 +9,15 @@ class Document < ApplicationRecord
   end
 
   def self.with_title(title)
-    where('title ILIKE ?', "%#{title}%") if title.present?
+    where('title ILIKE ?', "%#{title}%")
   end
 
   def self.with_sender(name)
-    return unless name.present?
-
     joins('LEFT OUTER JOIN contacts AS sender ON documents.sender_id = sender.id')
       .where('sender.name ILIKE ?', "%#{name}%")
   end
 
   def self.with_recipient(name)
-    return unless name.present?
-
     joins('LEFT OUTER JOIN contacts AS recipient ON documents.recipient_id = recipient.id')
       .where('recipient.name ILIKE ?', "%#{name}%")
   end
