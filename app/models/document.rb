@@ -9,7 +9,7 @@ class Document < ApplicationRecord
   end
 
   def self.order_by_acted_at(dir = 'DESC')
-    dir = if ['ASC', 'DESC'].include? dir then dir else 'DESC' end
-    order("COALESCE(received_at, sent_at, created_at::date) #{dir}")
+    direction = ['ASC', 'DESC'].include?(dir) ? dir : 'DESC'
+    order("COALESCE(received_at, sent_at, created_at::date) #{direction}")
   end
 end
