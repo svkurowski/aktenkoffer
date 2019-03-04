@@ -41,5 +41,7 @@ module Aktenkoffer
       password: authentication_password,
       unless: -> { authentication_name.blank? || authentication_password.blank? }
     }
+
+    config.eager_load_paths << Rails.root.join('lib')
   end
 end

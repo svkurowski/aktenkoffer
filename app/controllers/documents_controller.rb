@@ -2,9 +2,9 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
-    @documents = Document.includes(:recipient)
-      .includes(:sender)
-      .order_by_acted_at
+    @documents = Search::DocumentSearch.perform(params['query'])
+    @documents = @documents.includes(:recipient, :sender)
+                           .order_by_acted_at
   end
 
   def show
