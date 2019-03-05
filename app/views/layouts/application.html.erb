@@ -10,35 +10,36 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
 
   <body>
-  <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <%= link_to 'Aktenkoffer', root_path, class: 'navbar-brand' %>
-      <button class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <%= link_to root_path, class: 'navbar-item' do %>
+            <span class="icon is-large">
+              <i class="fas fa-briefcase"></i>
+            </span>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to 'Documents', documents_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Contacts', contacts_path, class: 'nav-link' %>
-          </li>
-        </ul>
+            <span class="is-size-4">Aktenkoffer</span>
+          <% end %>
+        </div>
+
+        <div id="navigation" class="navbar-menu">
+          <div class="navbar-end">
+            <%= link_to 'Documents', documents_path, class: 'navbar-item' %>
+            <%= link_to 'Contacts', contacts_path, class: 'navbar-item' %>
+          </div>
+        </div>
       </div>
     </nav>
-    <%= yield %>
-  </div>
 
+    <section class="section">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

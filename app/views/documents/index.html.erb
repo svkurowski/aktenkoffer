@@ -1,22 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <p id="notice" class="notification is-success has-bottom-spacing">
+    <%= notice %>
+  </p>
+<% end %>
 
-<%= simple_form_for :query, url: documents_path, method: :get do |f| %>
-  <div class="form-group">
-    <%= f.input :query, placeholder: 'What are you looking for?', label: false, input_html: { name: :query, value: params['query'] }, class: 'form-control'  %>
-    <%= f.submit 'Search', class: 'btn btn-primary' %>
+<%= simple_form_for :query, url: documents_path, method: :get, html: { class: 'has-bottom-spacing' } do |f| %>
+  <div class="field is-grouped">
+    <p class="control is-expanded">
+      <%= f.input_field :query, name: :query, value: params['query'], placeholder: 'What are you looking for?', class: 'input is-medium' %>
+    </p>
+
+    <p class="control">
+      <%= f.submit 'Search', class: 'button is-primary is-medium' %>
+    </p>
   </div>
 <% end %>
 
-<h1>Documents</h1>
+<h1 class="title is-1">Documents</h1>
 
-<table class="table">
+<table class="table is-fullwidth is-striped is-hoverable">
   <thead>
     <tr>
       <th>Title</th>
       <th>Sender</th>
       <th>Recipient</th>
       <th>Date</th>
-      <th colspan="3"></th>
+      <th class="actions"></th>
     </tr>
   </thead>
 
@@ -27,15 +36,30 @@
         <td><%= document.sender&.name %></td>
         <td><%= document.recipient&.name %></td>
         <td><%= document.acted_at %></td>
-        <td><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Edit', edit_document_path(document) %></td>
-        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td class="actions">
+          <%= link_to document do %>
+            <span class="icon">
+              <i class="fas fa-eye"></i>
+            </span>
+          <% end %>
+
+          <%= link_to edit_document_path(document) do %>
+            <span class="icon">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          <% end %>
+
+          <%= link_to document, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="icon">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <div class="d-flex justify-content-center"><%= will_paginate @documents %></div>
 
-<br>
-
-<%= link_to 'New Document', new_document_path %>
+<%= link_to 'New Document', new_document_path, class: 'button is-rounded is-link is-pulled-right' %>
