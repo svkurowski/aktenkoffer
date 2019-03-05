@@ -24,6 +24,8 @@ gem 'aws-sdk-s3', '~> 1', require: false
 
 gem 'simple_form', '~> 4.0.1'
 
+gem 'will_paginate', '~> 3.1.6'
+
 # Bootstrap assets
 gem 'jquery-rails', '~> 4.3.3'
 gem 'bootstrap', '~> 4.1.3'

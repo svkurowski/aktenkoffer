@@ -4,6 +4,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = Search::DocumentSearch.perform(params['query'])
     @documents = @documents.includes(:recipient, :sender)
+                           .paginate(page: params[:page])
                            .order_by_acted_at
   end
 
