@@ -49,6 +49,7 @@ group :development do
   gem 'bullet'
 
   gem 'reek', require: false
+  gem 'rails_best_practices', require: false
 end
 
 group :test do
