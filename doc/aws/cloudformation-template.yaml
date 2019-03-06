@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  AppUser:
+    Type: 'AWS::IAM::User'
+    Properties: {}
+  AppUserAccessKey:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref AppUser
+  ActiveStorageBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true
+  ActiveStorageBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref ActiveStorageBucket
+      PolicyDocument:
+        Statement:
+          -
+            Effect: Allow
+            Action:
+              - 's3:PutObject'
+              - 's3:GetObject'
+            Resource:
+              Fn::Join:
+                - ''
+                - - !GetAtt ActiveStorageBucket.Arn
+                  - /*
+            Principal:
+              AWS: !GetAtt AppUser.Arn
+Outputs:
+  AwsAccessKeyId:
+    Value: !Ref AppUserAccessKey
+  AwsSecretAccessKey:
+    Value: !GetAtt AppUserAccessKey.SecretAccessKey
+  AwsBucket:
+    Value: !Ref ActiveStorageBucket
+  AwsDefaultRegion:
+    Value: !Ref AWS::Region
