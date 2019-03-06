@@ -47,6 +47,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Help to get rid of N+1 queries and unused eager loading
   gem 'bullet'
+
+  gem 'reek', require: false
 end
 
 group :test do
