@@ -14,16 +14,5 @@
 
 @import 'bulma/bulma';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '/\*';
 
-.has-bottom-spacing {
-  margin-bottom: 3rem;
-}
-
-
-.table {
-  .actions {
-    @extend .has-text-centered;
-    width: 150px;
-  }
-}
+@import './globals';
