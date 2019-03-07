@@ -1,0 +1,71 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - bin/*
+    - db/migrate/*
+    - db/schema.rb
+    - config/**/*
+    - test/**/*
+
+
+Bundler/OrderedGems:
+  Enabled: false
+
+
+Layout/EndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: variable
+Layout/IndentArray:
+  Enabled: true
+  EnforcedStyle: consistent
+
+# Method definitions after `private` or `protected` isolated calls need one
+# extra level of indentation.
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: rails
+
+Layout/IndentHash:
+  Enabled: true
+  EnforcedStyle: consistent
+
+# Ensures a trailing new line
+Layout/TrailingBlankLines:
+  Enabled: true
+  EnforcedStyle: final_newline
+
+
+
+Metrics/LineLength:
+  Max: 120
+
+
+# Document classes and non-namespace modules.
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: true
+  EnforcedStyle: expanded
+
+# Checks if there is a magic comment to enforce string literals
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Use brackets for arrays of symbols.
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets
+
+# Use brackets for arrays of words.
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: brackets
+
+
+# Rails specific rules
+Rails:
+  Enabled: true
+
+Rails/Blank:
+  UnlessPresent: false

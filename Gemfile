@@ -22,8 +22,10 @@ gem 'jbuilder', '~> 2.5'
 # Use AWS S3 for ActiveStorage
 gem 'aws-sdk-s3', '~> 1', require: false
 
+# Easy handling of forms
 gem 'simple_form', '~> 4.0.1'
 
+# Pagination
 gem 'will_paginate', '~> 3.1.6'
 
 # Bootstrap assets
@@ -48,6 +50,7 @@ group :development do
   # Help to get rid of N+1 queries and unused eager loading
   gem 'bullet'
 
+  gem 'rubocop', require: false
   gem 'reek', require: false
   gem 'rails_best_practices', require: false
 end

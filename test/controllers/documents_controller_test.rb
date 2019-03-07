@@ -5,17 +5,17 @@ class DocumentsControllerTest < ActionDispatch::IntegrationTest
     @document = documents(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get documents_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_document_url
     assert_response :success
   end
 
-  test "should create document" do
+  test 'should create document' do
     assert_difference('Document.count') do
       post documents_url, params: { document: { received_at: @document.received_at, recipient_id: @document.recipient_id, sender_id: @document.sender_id, sent_at: @document.sent_at, title: @document.title } }
     end
@@ -23,22 +23,22 @@ class DocumentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to document_url(Document.last)
   end
 
-  test "should show document" do
+  test 'should show document' do
     get document_url(@document)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_document_url(@document)
     assert_response :success
   end
 
-  test "should update document" do
+  test 'should update document' do
     patch document_url(@document), params: { document: { received_at: @document.received_at, recipient_id: @document.recipient_id, sender_id: @document.sender_id, sent_at: @document.sent_at, title: @document.title } }
     assert_redirected_to document_url(@document)
   end
 
-  test "should destroy document" do
+  test 'should destroy document' do
     assert_difference('Document.count', -1) do
       delete document_url(@document)
     end
