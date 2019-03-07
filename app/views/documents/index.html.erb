@@ -1,13 +1,7 @@
-<% if notice.present? %>
-  <p id="notice" class="notification is-success has-bottom-spacing">
-    <%= notice %>
-  </p>
-<% end %>
-
-<%= simple_form_for :query, url: documents_path, method: :get, html: { class: 'has-bottom-spacing' } do |f| %>
+<%= form_with url: documents_path, method: :get, local: true, class: 'has-bottom-spacing' do |f| %>
   <div class="field is-grouped">
     <p class="control is-expanded">
-      <%= f.input_field :query, name: :query, value: params['query'], placeholder: 'What are you looking for?', class: 'input is-medium' %>
+      <%= f.text_field :query, value: params['query'], placeholder: 'What are you looking for?', class: 'input is-medium' %>
     </p>
 
     <p class="control">
@@ -15,6 +9,14 @@
     </p>
   </div>
 <% end %>
+
+
+<% if notice.present? %>
+  <p id="notice" class="notification is-success has-bottom-spacing">
+    <%= notice %>
+  </p>
+<% end %>
+
 
 <h1 class="title is-1">Documents</h1>
 
@@ -60,6 +62,7 @@
     <% end %>
   </tbody>
 </table>
+
 <div class="d-flex justify-content-center"><%= will_paginate @documents %></div>
 
 <%= link_to 'New Document', new_document_path, class: 'button is-rounded is-link is-pulled-right' %>
