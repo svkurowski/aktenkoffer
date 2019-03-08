@@ -11,7 +11,12 @@
 <% end %>
 
 
-<h1 class="title is-1">Documents</h1>
+<h1 class="title is-1 has-link">
+  Documents
+
+  <%= link_to 'New Document', new_document_path, class: 'button is-rounded is-link' %>
+</h1>
+
 
 <table class="table is-fullwidth is-striped is-hoverable">
   <thead>
@@ -56,6 +61,4 @@
   </tbody>
 </table>
 
-<div class="d-flex justify-content-center"><%= will_paginate @documents %></div>
-
-<%= link_to 'New Document', new_document_path, class: 'button is-rounded is-link is-pulled-right' %>
+<%= will_paginate @documents %>
