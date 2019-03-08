@@ -16,22 +16,16 @@
         <td><%= contact.address %></td>
 
         <td class="actions">
-          <%= link_to contact do %>
-          <span class="icon">
-            <i class="fas fa-eye"></i>
-          </span>
-          <% end %>
-
           <%= link_to edit_contact_path(contact) do %>
-          <span class="icon">
-            <i class="fas fa-pencil-alt"></i>
-          </span>
+            <span class="icon">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
           <% end %>
 
           <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="icon">
-            <i class="fas fa-trash-alt"></i>
-          </span>
+            <span class="icon">
+              <i class="fas fa-trash-alt"></i>
+            </span>
           <% end %>
         </td>
       </tr>
