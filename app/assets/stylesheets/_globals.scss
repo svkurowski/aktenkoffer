@@ -22,6 +22,14 @@
 }
 
 
+.file.is-hovering-with-file {
+  .file-cta {
+    background-color: #eeeeee;
+    color: #363636;
+  }
+}
+
+
 .field.is-date-select {
   .control {
     display: flex;

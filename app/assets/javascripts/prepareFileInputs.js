@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     element.ondragenter = (event) => {
       event.preventDefault();
 
-      console.log('File(s) in drop zone');
-      element.classList.add('test');
+      element.classList.add('is-hovering-with-file');
     }
 
     element.ondragover = (event) => {
@@ -28,13 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     element.ondrop = (event) => {
       event.preventDefault();
 
-      console.log('DROP');
       input.files = event.dataTransfer.files;
     }
 
     element.ondragleave = () => {
-      console.log('LEAVE');
-      element.classList.remove('test');
+      element.classList.remove('is-hovering-with-file');
     }
   });
 });
