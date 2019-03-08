@@ -40,6 +40,12 @@
       <div class="container">
         <%= yield %>
       </div>
+
+      <% if notice.present? %>
+        <p class="notification is-success is-not-closable">
+          <%= notice %>
+        </p>
+      <% end %>
     </div>
   </body>
 </html>
