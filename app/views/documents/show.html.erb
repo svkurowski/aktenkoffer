@@ -33,14 +33,14 @@
   <div class="column">
     <div class="box has-equal-height">
       <% if @document.original_file.attached? %>
-        <a href="<%= url_for @document.original_file %>" target="_blank">
+        <%= link_to url_for(@document.original_file), target: '_blank' do %>
           <object data="<%= url_for @document.original_file %>" type="application/pdf">
             <p>
               This browser does not support embedding PDF files.
               <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.
             </p>
           </object>
-        </a>
+        <% end %>
       <% end %>
     </div>
   </div>

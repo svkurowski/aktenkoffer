@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const fileElements = document.querySelectorAll('.file.has-name');
   fileElements.forEach(element => {

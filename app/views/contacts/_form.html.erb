@@ -2,7 +2,7 @@
   <div class="field">
     <label class="label">Name</label>
     <div class="control">
-      <%= f.text_field :name, class: "input #{' is-danger' if contact.errors[:name].present?}" %>
+      <%= f.text_field :name, class: "input#{' is-danger' if contact.errors[:name].present?}" %>
     </div>
 
     <% if contact.errors[:name].present? %>

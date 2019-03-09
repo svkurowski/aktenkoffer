@@ -42,13 +42,13 @@ module PaginationHelper
       end
 
       def previous_page
-        num = @collection.current_page > 1 && @collection.current_page - 1
+        num = @collection.current_page - 1 if @collection.current_page > 0
 
         previous_or_next_page(num, @options[:previous_label], 'pagination-previous')
       end
 
       def next_page
-        num = @collection.current_page < @collection.total_pages && @collection.current_page + 1
+        num = @collection.current_page + 1 if @collection.current_page < @collection.total_pages
 
         previous_or_next_page(num, @options[:next_label], 'pagination-next')
       end
