@@ -2,7 +2,7 @@
   <% if document.new_record? %>
     <div class="field">
       <label class="label">Document</label>
-      <div class="file has-name">
+      <div class="file has-name<%= ' is-danger' if document.errors[:original_file].present? %>">
         <label class="file-label">
           <%= f.file_field :original_file, class: 'file-input' %>
 
@@ -20,6 +20,11 @@
           </span>
         </label>
       </div>
+      <% if document.errors[:original_file].present? %>
+        <p class="help is-danger">
+          Document <%= document.errors[:original_file].to_sentence %>
+        </p>
+      <% end %>
     </div>
   <% end %>
 
