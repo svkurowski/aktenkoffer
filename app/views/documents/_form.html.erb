@@ -1,25 +1,27 @@
 <%= form_with model: document, local: true do |f| %>
-  <div class="field">
-    <label class="label">Document</label>
-    <div class="file has-name">
-      <label class="file-label">
-        <%= f.file_field :original_file, class: 'file-input' %>
+  <% if document.new_record? %>
+    <div class="field">
+      <label class="label">Document</label>
+      <div class="file has-name">
+        <label class="file-label">
+          <%= f.file_field :original_file, class: 'file-input' %>
 
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload"></i>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
           </span>
-          <span class="file-label">
-            Choose a file…
-          </span>
-        </span>
 
-        <span class="file-name">
-          No file chosen
-        </span>
-      </label>
+          <span class="file-name">
+            No file chosen
+          </span>
+        </label>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="field">
     <label class="label">Title</label>

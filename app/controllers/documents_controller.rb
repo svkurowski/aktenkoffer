@@ -34,7 +34,9 @@ class DocumentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @document.update(document_params)
+      # The original_file attachment is readonly. We enforce this in the controller
+      # because model validations do not support ActiveStorage attachments.
+      if @document.update(document_params.except(:original_file))
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
