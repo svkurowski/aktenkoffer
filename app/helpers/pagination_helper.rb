@@ -18,15 +18,15 @@ module PaginationHelper
     end
 
     def container_attributes
-      super.except(*[:link_options])
+      super.except(:link_options)
     end
 
     protected
 
       def page_number(page)
-        link_options = @options[:link_options] || {}
+        return tag(:li, tag(:span, page), class: 'pagination-link is-current') if page == current_page
 
-        return tag(:li, tag(:span, page), class: ('pagination-link is-current')) if page == current_page
+        link_options = @options[:link_options] || {}
         tag :li, link(page, page, link_options.merge(rel: rel_value(page), class: 'pagination-link'))
       end
 
@@ -34,6 +34,7 @@ module PaginationHelper
         link_options = @options[:link_options] || {}
 
         return tag(:li, link(text, page, link_options), class: classname) if page
+
         tag :li, tag(:span, text), class: classname, disabled: true
       end
 
@@ -42,7 +43,7 @@ module PaginationHelper
       end
 
       def previous_page
-        num = @collection.current_page - 1 if @collection.current_page > 0
+        num = @collection.current_page - 1 if @collection.current_page.positive?
 
         previous_or_next_page(num, @options[:previous_label], 'pagination-previous')
       end
