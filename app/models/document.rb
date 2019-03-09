@@ -5,10 +5,16 @@ class Document < ApplicationRecord
   belongs_to :sender, class_name: 'Contact', optional: true
   belongs_to :recipient, class_name: 'Contact', optional: true
 
+  validate :original_file_cannot_be_blank
+
   has_one_attached :original_file
 
   def acted_at
     received_at || sent_at || created_at.to_date
+  end
+
+  def original_file_cannot_be_blank
+    errors.add(:original_file, :blank) unless original_file.attached?
   end
 
   def self.acted_at_after(date_string)
