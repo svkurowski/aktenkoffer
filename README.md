@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Quickstart
 
-Things you may want to cover:
+Install the dependencies...
 
-* Ruby version
+```sh
+$ bundle install
+$ yarn install
+```
 
-* System dependencies
+...and run the server.
 
-* Configuration
+```sh
+$ bin/rails server
+```
 
-* Database creation
+## Linting
 
-* Database initialization
+This project uses multiple linters to apply a common code style and catch common mistakes.
 
-* How to run the test suite
+`rubocop` helps us implement our agreed upon coding style. `reek` can help find potential candidates for refactorings. `rails_best_pratices` will help us pay attention to gotchas and quirks of Rails.
 
-* Services (job queues, cache servers, search engines, etc.)
+To run the linters manually, use the following commands:
 
-* Deployment instructions
+```sh
+$ bundle exec rubocop .
+$ bundle exec reek .
+$ bundle exec rails_best_practices .
+```
 
-* ...
+
+`rubocop` is run on every PR automatically by the CI pipeline. The other should be run periodically by the developers to keep our high requirements of quality.

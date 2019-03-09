@@ -1,5 +1,16 @@
 version: 2
+
 jobs:
+  lint:
+    docker:
+      - image: circleci/ruby:2.6.1-node
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Lint with rubocop
+          command: |
+            bundle exec rubocop .
   deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -9,8 +20,12 @@ jobs:
           name: Deploy master to Heroku
           command: |
             git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
 workflows:
   version: 2
+  lint:
+    jobs:
+      - lint
   deploy:
     jobs:
       - deploy:
