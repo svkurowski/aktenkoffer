@@ -17,7 +17,7 @@ $ bin/rails server
 
 ## Linting
 
-This project uses mutliple linters to apply a common code style and catch common mistakes.
+This project uses multiple linters to apply a common code style and catch common mistakes.
 
 `rubocop` helps us implement our agreed upon coding style. `reek` can help find potential candidates for refactorings. `rails_best_pratices` will help us pay attention to gotchas and quirks of Rails.
 
