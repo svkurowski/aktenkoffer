@@ -25,25 +25,16 @@
       <th>Sender</th>
       <th>Recipient</th>
       <th>Date</th>
-      <th class="actions"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @documents.each do |document| %>
-      <tr>
-        <td><%= document.title %></td>
-        <td><%= document.sender&.name %></td>
-        <td><%= document.recipient&.name %></td>
-        <td><%= document.acted_at %></td>
-
-        <td class="actions">
-          <%= link_to document do %>
-            <span class="icon">
-              <i class="fas fa-eye"></i>
-            </span>
-          <% end %>
-        </td>
+      <tr class="is-link">
+        <td><%= link_to document.title            || '&nbsp;'.html_safe, document %></td>
+        <td><%= link_to document.sender&.name     || '&nbsp;'.html_safe, document %></td>
+        <td><%= link_to document.recipient&.name  || '&nbsp;'.html_safe, document %></td>
+        <td><%= link_to document.acted_at         || '&nbsp;'.html_safe, document %></td>
       </tr>
     <% end %>
   </tbody>
