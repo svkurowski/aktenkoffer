@@ -1,51 +1,67 @@
 require 'will_paginate/view_helpers/action_view'
 
 module PaginationHelper
-  module BootstrapRenderer
+  module BulmaRenderer
     def to_html
-      html = pagination.map do |item|
-        item.is_a?(Integer) ? page_number(item) : send(item)
-      end.join(@options[:link_separator])
+      pages = pagination
+      page_prev = pages.delete(:previous_page)
+      page_next = pages.delete(:next_page)
 
-      html = html_container(html) if @options[:container]
+      content = content_for_pagination(pages, page_prev, page_next)
+      tag('nav', content, class: "pagination is-centered #{@options[:class]}")
+    end
 
-      tag('nav', tag('ul', html, class: @options[:class]))
+    def container_attributes
+      super.except(:link_options)
     end
 
     protected
 
-      def page_item(text, url, link_status = nil)
-        text = text.to_s + tag(:span, '(current)', class: 'sr-only') if link_status == 'active'
-        link_tag = link_status.nil? ? link(text, url, class: 'page-link', rel: text) : tag(:span, text, class: 'page-link')
-
-        tag(:li, link_tag, class: "page-item #{link_status}")
-      end
-
       def page_number(page)
-        link_status = 'active' if page == current_page
-        page_item(page, page, link_status)
+        return tag(:li, tag(:span, page), class: 'pagination-link is-current') if page == current_page
+
+        link_options = @options[:link_options] || {}
+        tag :li, link(page, page, link_options.merge(rel: rel_value(page), class: 'pagination-link'))
       end
 
       def gap
-        text = @template.will_paginate_translate(:page_gap) { '&hellip;' }
-        page_item(text, nil, 'disabled')
+        tag :li, '<span class="pagination-ellipsis">&hellip;</span>'
+      end
+
+      def content_for_pagination(pages, page_prev, page_next)
+        list_items = list_items_for(pages)
+
+        content = tag('ul', list_items, class: 'pagination-list')
+        content.prepend(next_page) if page_next
+        content.prepend(previous_page) if page_prev
+        content
+      end
+
+      def list_items_for(pages)
+        pages.map { |item| item.is_a?(Integer) ? page_number(item) : send(item) }
+             .join(@options[:link_separator])
       end
 
       def previous_page
-        num = @collection.current_page > 1 && @collection.current_page - 1
-        previous_or_next_page(num, @options[:previous_label], 'Previous')
+        num = @collection.current_page - 1 if @collection.current_page.positive?
+
+        previous_or_next_page(num, @options[:previous_label], 'pagination-previous')
       end
 
       def next_page
-        num = @collection.current_page < total_pages && @collection.current_page + 1
-        previous_or_next_page(num, @options[:next_label], 'Next')
+        num = @collection.current_page + 1 if @collection.current_page < @collection.total_pages
+
+        previous_or_next_page(num, @options[:next_label], 'pagination-next')
       end
 
-      def previous_or_next_page(page, text, _aria_label)
-        link_status = 'disabled' unless page
-        page_item(text, page, link_status)
+      def previous_or_next_page(page, text, classname)
+        link_options = @options[:link_options] || {}
+
+        return tag(:li, link(text, page, link_options), class: classname) if page
+
+        tag :li, tag(:span, text), class: classname, disabled: true
       end
   end
 end
 
-WillPaginate::ActionView::LinkRenderer.send :include, PaginationHelper::BootstrapRenderer
+WillPaginate::ActionView::LinkRenderer.send(:include, PaginationHelper::BulmaRenderer)

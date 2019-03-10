@@ -1,0 +1,13 @@
+.title.has-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box {
+  &.has-equal-height {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}

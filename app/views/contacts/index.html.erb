@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h1 class="title is-1">Contacts</h1>
 
-<h1>Contacts</h1>
-
-<table class="table">
+<table class="table is-fullwidth is-striped is-hoverable">
   <thead>
     <tr>
       <th>Name</th>
       <th>Address</th>
-      <th colspan="3"></th>
+      <th class="actions"></th>
     </tr>
   </thead>
 
@@ -16,14 +14,23 @@
       <tr>
         <td><%= contact.name %></td>
         <td><%= contact.address %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td class="actions">
+          <%= link_to edit_contact_path(contact) do %>
+            <span class="icon">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          <% end %>
+
+          <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="icon">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>
+<%= link_to 'New Contact', new_contact_path, class: 'button is-rounded is-link is-pulled-right' %>

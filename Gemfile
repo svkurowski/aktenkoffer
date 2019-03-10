@@ -22,15 +22,8 @@ gem 'jbuilder', '~> 2.5'
 # Use AWS S3 for ActiveStorage
 gem 'aws-sdk-s3', '~> 1', require: false
 
-# Easy handling of forms
-gem 'simple_form', '~> 4.0.1'
-
 # Pagination
 gem 'will_paginate', '~> 3.1.6'
-
-# Bootstrap assets
-gem 'jquery-rails', '~> 4.3.3'
-gem 'bootstrap', '~> 4.1.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

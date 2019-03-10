@@ -12,9 +12,14 @@
  *= require_self
  */
 
- @import "bootstrap";
- @import "/\*";
+@import 'bulma/bulma';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'fontawesome/solid';
 
- body {
-    padding-top: 1rem;
- }
+@import 'globals/variables';
+@import 'globals/helpers';
+@import 'globals/generic';
+
+@import 'globals/components/all';
+
+@import 'views/\*';
