@@ -39,6 +39,22 @@
           <strong>Received at:</strong>
           <%= @document.received_at %>
         </p>
+
+        <p class="is-divider"></p>
+
+        <p class="actions is-flex">
+          <%= link_to edit_document_path(@document) do %>
+            <span class="icon">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          <% end %>
+
+          <%= link_to @document, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="icon">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>
