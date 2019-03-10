@@ -16,7 +16,9 @@
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import 'fontawesome/solid';
 
-@import 'globals';
-@import 'helpers';
+@import 'globals/variables';
+@import 'globals/helpers';
+@import 'globals/generic';
+@import 'globals/components/all';
 
 @import 'views/\*';
