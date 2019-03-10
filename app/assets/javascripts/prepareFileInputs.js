@@ -1,36 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const fileElements = document.querySelectorAll('.file.has-name');
-  fileElements.forEach(element => {
-    const input = element.querySelector('.file-input');
+  const dropOverlay = document.querySelector('.file-drop-overlay');
 
-    input.addEventListener('change', () => {
-      if (!input.files.length) {
-        return;
-      }
+  const fileElement = document.querySelector('.file.has-name');
+  const fileInput = fileElement.querySelector('.file-input');
 
-      element.querySelector('.file-name').innerHTML = input.files[0].name;
-    });
-
-    element.ondragenter = (event) => {
-      event.preventDefault();
-
-      element.classList.add('is-hovering-with-file');
+  fileInput.addEventListener('change', () => {
+    if (!fileInput.files.length) {
+      return;
     }
 
-    element.ondragover = (event) => {
-      event.preventDefault();
+    const label = fileElement.querySelector('.file-name');
+    label.innerHTML = fileInput.files[0].name;
 
-      event.dataTransfer.dropEffect = 'copy';
-    }
-
-    element.ondrop = (event) => {
-      event.preventDefault();
-
-      input.files = event.dataTransfer.files;
-    }
-
-    element.ondragleave = () => {
-      element.classList.remove('is-hovering-with-file');
-    }
+    fileElement.classList.add('has-file-attached');
   });
+
+
+  document.body.ondragenter = (event) => {
+    event.preventDefault();
+
+    dropOverlay.classList.add('show');
+  }
+
+  document.body.ondragover = (event) => {
+    event.preventDefault();
+
+    event.dataTransfer.dropEffect = 'copy';
+  }
+
+  document.body.ondrop = (event) => {
+    event.preventDefault();
+
+    dropOverlay.classList.remove('show');
+    fileInput.files = event.dataTransfer.files;
+  }
+
+  document.body.ondragleave = (event) => {
+    if (!event.clientX && !event.clientY) {
+      dropOverlay.classList.remove('show');
+    }
+  }
 });

@@ -1,12 +1,3 @@
-.has-top-spacing {
-  margin-top: 3rem;
-}
-
-.has-bottom-spacing {
-  margin-bottom: 3rem;
-}
-
-
 .title.has-link {
   display: flex;
   align-items: center;
@@ -21,19 +12,55 @@
   }
 }
 
+.file {
+  .icon {
+    align-self: center;
+    margin-left: 12px;
 
-.file.is-hovering-with-file {
-  .file-cta {
-    background-color: #eeeeee;
-    color: #363636;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  &.has-file-attached {
+    .icon {
+      opacity: 1;
+    }
+  }
+}
+
+
+.file-drop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility, opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+
+  &.show {
+    visibility: visible;
+    opacity: 0.6;
+  }
+
+  .drop-message {
+    border: 2px dashed whitesmoke;
+    border-radius: 12px;
+
+    padding: 2rem;
+
+    height: 300px;
+    width: 300px;
   }
 }
 
 
 .field.is-date-select {
   .control {
-    display: flex;
-
     select {
       width: 100%;
       height: 2.25em;

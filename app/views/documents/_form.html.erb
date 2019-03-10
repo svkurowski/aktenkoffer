@@ -17,6 +17,10 @@
         <span class="file-name">
           No file chosen
         </span>
+
+        <span class="icon is-medium has-text-success">
+          <i class="fas fa-check-circle fa-lg"></i>
+        </span>
       </label>
     </div>
   </div>
@@ -48,14 +52,14 @@
 
   <div class="field is-date-select">
     <label class="label">Sent at</label>
-    <div class="control">
+    <div class="control is-flex">
       <%= f.date_select :sent_at %>
     </div>
   </div>
 
   <div class="field is-date-select">
     <label class="label">Received at</label>
-    <div class="control">
+    <div class="control is-flex">
       <%= f.date_select :received_at %>
     </div>
   </div>
