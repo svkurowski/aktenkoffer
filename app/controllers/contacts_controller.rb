@@ -1,11 +1,8 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:edit, :update, :destroy]
 
   def index
     @contacts = Contact.all
-  end
-
-  def show
   end
 
   def new
@@ -20,7 +17,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to contacts_url, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -44,7 +41,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to contacts_url, notice: 'Contact was successfully deleted.' }
       format.json { head :no_content }
     end
   end

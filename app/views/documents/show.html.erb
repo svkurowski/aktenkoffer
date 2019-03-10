@@ -1,42 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @document.title %>
-</p>
-
-<p>
-  <strong>Sender:</strong>
-  <%= @document.sender&.name %>
-</p>
-
-<p>
-  <strong>Recipient:</strong>
-  <%= @document.recipient&.name %>
-</p>
-
-<p>
-  <strong>Sent at:</strong>
-  <%= @document.sent_at %>
-</p>
-
-<p>
-  <strong>Received at:</strong>
-  <%= @document.received_at %>
-</p>
-
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
-
-
-<p>
-  <strong>Original file:</strong>
-</p>
-<% if @document.original_file.attached? %>
-  <div>
-    <object data="<%= url_for @document.original_file %>" type="application/pdf" class="embedded-document">
-      <p>This browser does not support embedding PDF files. <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.</p>
-    </object>
+<div id="document" class="columns">
+  <div class="column is-two-thirds">
+    <div class="box has-equal-height">
+      <% if @document.original_file.attached? %>
+      <object data="<%= url_for @document.original_file %>" type="application/pdf">
+        <p>
+          This browser does not support embedding PDF files.
+          <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.
+        </p>
+      </object>
+      <% end %>
+    </div>
   </div>
-<% end %>
+
+  <div class="column is-one-third">
+    <div class="box has-equal-height description">
+      <div class="content is-medium">
+        <p>
+          <strong>Title:</strong>
+          <%= @document.title %>
+        </p>
+
+        <p>
+          <strong>Sender:</strong>
+          <%= @document.sender&.name %>
+        </p>
+
+        <p>
+          <strong>Recipient:</strong>
+          <%= @document.recipient&.name %>
+        </p>
+
+        <p>
+          <strong>Sent at:</strong>
+          <%= @document.sent_at %>
+        </p>
+
+        <p>
+          <strong>Received at:</strong>
+          <%= @document.received_at %>
+        </p>
+      </div>
+    </div>
+  </div>

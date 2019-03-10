@@ -1,5 +1,8 @@
 {
   "name": "aktenkoffer",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "~5.7.2",
+    "bulma": "~0.7.4"
+  }
 }

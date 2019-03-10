@@ -1,0 +1,6 @@
+.table {
+  .actions {
+    @extend .has-text-centered;
+    width: 150px;
+  }
+}

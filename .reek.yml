@@ -3,6 +3,8 @@ exclude_paths:
   - config
 
 detectors:
+  DuplicateMethodCall:
+    max_calls: 2
   IrresponsibleModule:
     enabled: false
   TooManyStatements:

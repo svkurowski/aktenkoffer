@@ -1,18 +1,72 @@
+<%= form_with model: document, local: true do |f| %>
+  <div class="field">
+    <label class="label">Document</label>
+    <div class="file has-name">
+      <label class="file-label">
+        <%= f.file_field :original_file, class: 'file-input' %>
 
-<%= simple_form_for document do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose a file…
+          </span>
+        </span>
 
-  <div class="form-inputs">
-    <%= f.input :original_file %>
-    <%= f.input :title %>
-    <%= f.association :sender %>
-    <%= f.association :recipient %>
-    <%= f.input :sent_at %>
-    <%= f.input :received_at %>
+        <span class="file-name">
+          No file chosen
+        </span>
+      </label>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="field">
+    <label class="label">Title</label>
+    <div class="control">
+      <%= f.text_field :title, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Sender</label>
+    <div class="control is-expanded">
+      <div class="select is-fullwidth">
+        <%= f.collection_select(:sender_id, Contact.all, :id, :name, include_blank: true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Recipient</label>
+    <div class="control is-expanded">
+      <div class="select is-fullwidth">
+        <%= f.collection_select(:recipient_id, Contact.all, :id, :name, include_blank: true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-date-select">
+    <label class="label">Sent at</label>
+    <div class="control is-flex">
+      <%= f.date_select :sent_at %>
+    </div>
+  </div>
+
+  <div class="field is-date-select">
+    <label class="label">Received at</label>
+    <div class="control is-flex">
+      <%= f.date_select :received_at %>
+    </div>
+  </div>
+
+  <div class="field is-grouped has-top-spacing">
+    <div class="control">
+      <%= f.submit 'Submit', class: 'button is-primary' %>
+    </div>
+
+    <div class="control">
+      <%= link_to 'Back', documents_path, class: 'button is-text' %>
+    </div>
   </div>
 <% end %>

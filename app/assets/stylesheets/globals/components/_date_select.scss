@@ -1,0 +1,28 @@
+.field.is-date-select {
+  .control {
+    select {
+      width: 100%;
+      height: 2.25em;
+      font-size: 1em;
+      color: #363636;
+      background-color: white;
+      border-color: #dbdbdb;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+
+      &:first-child {
+        margin-right: 0.25rem;
+      }
+
+      &:last-child {
+        margin-left: 0.25rem;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}

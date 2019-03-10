@@ -1,0 +1,28 @@
+.file-drop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility, opacity;
+  transition-duration: $transitionDurationShort;
+  transition-timing-function: ease-in-out;
+
+  &.show {
+    visibility: visible;
+    opacity: 0.6;
+  }
+
+  .drop-message {
+    border: 2px dashed whitesmoke;
+    border-radius: 12px;
+
+    padding: 2rem;
+
+    height: 300px;
+    width: 300px;
+  }
+}

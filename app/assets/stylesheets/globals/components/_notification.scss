@@ -1,0 +1,35 @@
+.notification {
+  position: fixed;
+  right: 20px;
+  bottom: -100px;
+  z-index: 99;
+
+  animation-duration: 4s;
+  animation-name: notice-slideup;
+
+  &.is-not-closable {
+    padding-right: 1.5rem;
+  }
+}
+
+@keyframes notice-slideup {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+
+  10% {
+    bottom: 40px;
+    opacity: 1;
+  }
+
+  90% {
+    bottom: 40px;
+    opacity: 1;
+  }
+
+  100% {
+    bottom: -100px;
+    opacity: 0;
+  }
+}
