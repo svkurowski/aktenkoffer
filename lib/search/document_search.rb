@@ -1,5 +1,12 @@
 module Search
   class DocumentSearch
+    OPERATOR_TO_METHOD_SYMBOL = {
+      recipient: :with_recipient,
+      sender: :with_sender,
+      title: :with_title
+    }.freeze
+    private_constant :OPERATOR_TO_METHOD_SYMBOL
+
     class << self
       def perform(query)
         documents = Document.all
@@ -30,15 +37,19 @@ module Search
         def filter_attributes(documents, params)
           params.keys.reduce(documents) do |result, attribute|
             query_method, filter_value = filter_query_for(params, attribute)
-            result = result.send(query_method, filter_value) if result.respond_to?(query_method)
+            result = result.send(query_method, filter_value)
             result
           end
         end
 
         def filter_query_for(params, attribute)
-          return ["with_#{attribute}", params[attribute]] if params[attribute].present?
-
-          ['with_title', attribute]
+          attribute_value = params[attribute]
+          method_symbol = OPERATOR_TO_METHOD_SYMBOL[attribute.to_sym]
+          if attribute_value.present? && method_symbol.present?
+            [method_symbol, attribute_value]
+          else
+            [:with_title, attribute]
+          end
         end
     end
   end
