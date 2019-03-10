@@ -1,4 +1,7 @@
 class Document < ApplicationRecord
+  ACTED_AT_SQL = "COALESCE(received_at, sent_at, #{table_name}.created_at::date)".freeze
+  private_constant :ACTED_AT_SQL
+
   belongs_to :sender, class_name: 'Contact', optional: true
   belongs_to :recipient, class_name: 'Contact', optional: true
 
@@ -6,6 +9,16 @@ class Document < ApplicationRecord
 
   def acted_at
     received_at || sent_at || created_at.to_date
+  end
+
+  def self.acted_at_after(date_string)
+    date = Date.parse(date_string)
+    where("#{ACTED_AT_SQL} >= ?", date)
+  end
+
+  def self.acted_at_before(date_string)
+    date = Date.parse(date_string)
+    where("#{ACTED_AT_SQL} <= ?", date)
   end
 
   def self.with_title(title)
@@ -24,6 +37,6 @@ class Document < ApplicationRecord
 
   def self.order_by_acted_at(dir = 'DESC')
     direction = ['ASC', 'DESC'].include?(dir) ? dir : 'DESC'
-    order(Arel.sql("COALESCE(received_at, sent_at, #{table_name}.created_at::date) #{direction}"))
+    order(Arel.sql("#{ACTED_AT_SQL} #{direction}"))
   end
 end

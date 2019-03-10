@@ -1,9 +1,11 @@
 module Search
   class DocumentSearch
     OPERATOR_TO_METHOD_SYMBOL = {
+      after: :acted_at_after,
+      before: :acted_at_before,
       from: :with_sender,
-      to: :with_recipient,
-      title: :with_title
+      title: :with_title,
+      to: :with_recipient
     }.freeze
     private_constant :OPERATOR_TO_METHOD_SYMBOL
 
