@@ -1,8 +1,8 @@
 module Search
   class DocumentSearch
     OPERATOR_TO_METHOD_SYMBOL = {
-      recipient: :with_recipient,
-      sender: :with_sender,
+      from: :with_sender,
+      to: :with_recipient,
       title: :with_title
     }.freeze
     private_constant :OPERATOR_TO_METHOD_SYMBOL
