@@ -1,4 +1,6 @@
 class Document < ApplicationRecord
+  include Taggable
+
   ACTED_AT_SQL = "COALESCE(received_at, sent_at, #{table_name}.created_at::date)".freeze
   private_constant :ACTED_AT_SQL
 

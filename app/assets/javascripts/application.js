@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require bulma-tagsinput/dist/js/bulma-tagsinput
 //= require_tree .
