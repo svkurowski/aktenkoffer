@@ -40,6 +40,16 @@
           <%= @document.received_at %>
         </p>
 
+        <p>
+          <strong>Tags:</strong>
+          <br>
+          <% @document.tag_names.each do |tag_name| %>
+            <span class="tag">
+              <%= tag_name %>
+            </span>
+          <% end %>
+        </p>
+
         <hr class="is-divider"></hr>
 
         <div class="actions is-flex">

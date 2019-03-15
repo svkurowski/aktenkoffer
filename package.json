@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "~5.7.2",
-    "bulma": "~0.7.4"
+    "bulma": "~0.7.4",
+    "bulma-tagsinput": "~2.0.0"
   }
 }

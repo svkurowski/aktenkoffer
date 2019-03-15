@@ -67,6 +67,13 @@
     </div>
   </div>
 
+  <div class="field">
+    <label class="label">Tags</label>
+    <div class="control is-flex">
+      <%= f.text_field :tag_names, type: 'tags', value: document.tag_names.join(',') %>
+    </div>
+  </div>
+
   <div class="field is-grouped has-top-spacing">
     <div class="control">
       <%= f.submit 'Submit', class: 'button is-primary' %>
