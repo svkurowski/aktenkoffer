@@ -43,6 +43,10 @@ class Document < ApplicationRecord
       .where('recipient.name ILIKE ?', "%#{name}%")
   end
 
+  def self.with_tag(tag_name)
+    tagged_with(names: [tag_name])
+  end
+
   def self.order_by_acted_at(dir = 'DESC')
     direction = ['ASC', 'DESC'].include?(dir) ? dir : 'DESC'
     order_sql = <<-SQL
