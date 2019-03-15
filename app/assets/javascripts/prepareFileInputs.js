@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const dropOverlay = document.querySelector('.file-drop-overlay');
-
   const fileElement = document.querySelector('.file.has-name');
+  if (!fileElement) {
+    return;
+  }
+
+  const dropOverlay = document.querySelector('.file-drop-overlay');
   const fileInput = fileElement.querySelector('.file-input');
 
   fileInput.addEventListener('change', () => {
