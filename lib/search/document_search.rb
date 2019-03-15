@@ -4,6 +4,7 @@ module Search
       after: :acted_at_after,
       before: :acted_at_before,
       from: :with_sender,
+      tag: :with_tag,
       title: :with_title,
       to: :with_recipient
     }.freeze
