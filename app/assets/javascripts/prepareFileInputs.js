@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   const fileElement = document.querySelector('.file.has-name');
   if (!fileElement) {
     return;
