@@ -12,6 +12,8 @@
   }
 }
 
-p.is-divider {
+hr.is-divider {
+  margin-top: 0;
+  margin-bottom: 1em;
   border-bottom: 1px solid $white-ter;
 }

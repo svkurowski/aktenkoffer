@@ -40,9 +40,9 @@
           <%= @document.received_at %>
         </p>
 
-        <p class="is-divider"></p>
+        <hr class="is-divider"></hr>
 
-        <p class="actions is-flex">
+        <div class="actions is-flex">
           <%= link_to edit_document_path(@document) do %>
             <span class="icon">
               <i class="fas fa-pencil-alt"></i>
@@ -54,7 +54,7 @@
               <i class="fas fa-trash-alt"></i>
             </span>
           <% end %>
-        </p>
+        </div>
       </div>
     </div>
   </div>
