@@ -17,15 +17,11 @@
 
         <td class="actions">
           <%= link_to edit_contact_path(contact) do %>
-            <span class="icon">
-              <i class="fas fa-pencil-alt"></i>
-            </span>
+            <%= icon_for(:edit) %>
           <% end %>
 
           <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span class="icon">
-              <i class="fas fa-trash-alt"></i>
-            </span>
+            <%= icon_for(:delete) %>
           <% end %>
         </td>
       </tr>
