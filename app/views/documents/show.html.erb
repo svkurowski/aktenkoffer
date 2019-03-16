@@ -39,6 +39,18 @@
           <strong>Received at:</strong>
           <%= @document.received_at %>
         </p>
+
+        <hr class="is-divider"></hr>
+
+        <div class="actions is-flex">
+          <%= link_to edit_document_path(@document) do %>
+            <%= icon_for(:edit) %>
+          <% end %>
+
+          <%= link_to @document, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon_for(:delete) %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
