@@ -3,14 +3,14 @@ module IconHelper
     briefcase: 'briefcase',
     edit: 'pencil-alt',
     delete: 'trash-alt'
-  }
+  }.freeze
 
   SIZE_CLASSES = {
     small: ' is-small',
     normal: '',
     medium: ' is-medium',
     large: ' is-large'
-  }
+  }.freeze
 
   def icon_for(icon, options = {})
     icon_class = ICON_CLASSES[icon]
