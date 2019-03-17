@@ -43,6 +43,11 @@ class Document < ApplicationRecord
 
   def self.order_by_acted_at(dir = 'DESC')
     direction = ['ASC', 'DESC'].include?(dir) ? dir : 'DESC'
-    order(Arel.sql("#{ACTED_AT_SQL} #{direction}"))
+    order_sql = <<-SQL
+      #{ACTED_AT_SQL} #{direction},
+      #{table_name}.created_at #{direction},
+      #{table_name}.id #{direction}
+    SQL
+    order(Arel.sql(order_sql))
   end
 end
