@@ -1,2 +1,6 @@
+@import 'bulma/sass/utilities/initial-variables';
+
 $transitionDurationLong: 500ms;
 $transitionDurationShort: 250ms;
+
+$navbar-breakpoint: $tablet;
