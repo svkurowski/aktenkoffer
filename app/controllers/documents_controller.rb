@@ -21,37 +21,29 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
 
-    respond_to do |format|
-      if @document.save
-        format.html { redirect_to documents_url, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
-      else
-        format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
+    unless @document.save
+      render :new
+      return
     end
+
+    redirect_to documents_url, notice: 'Document was successfully created.'
   end
 
   def update
-    respond_to do |format|
-      # The original_file attachment is readonly. We enforce this in the controller
-      # because model validations do not support ActiveStorage attachments.
-      if @document.update(document_params.except(:original_file))
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
+    # The original_file attachment is readonly. We enforce this in the controller
+    # because model validations do not support ActiveStorage attachments.
+    unless @document.update(document_params.except(:original_file))
+      render :edit
+      return
     end
+
+    redirect_to @document, notice: 'Document was successfully updated.'
   end
 
   def destroy
     @document.destroy
-    respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully deleted.' }
-      format.json { head :no_content }
-    end
+
+    redirect_to documents_url, notice: 'Document was successfully deleted.'
   end
 
   private
