@@ -23,24 +23,24 @@ document.addEventListener('turbolinks:load', () => {
     event.preventDefault();
 
     dropOverlay.classList.add('show');
-  }
+  };
 
   document.body.ondragover = (event) => {
     event.preventDefault();
 
     event.dataTransfer.dropEffect = 'copy';
-  }
+  };
 
   document.body.ondrop = (event) => {
     event.preventDefault();
 
     dropOverlay.classList.remove('show');
     fileInput.files = event.dataTransfer.files;
-  }
+  };
 
   document.body.ondragleave = (event) => {
     if (!event.clientX && !event.clientY) {
       dropOverlay.classList.remove('show');
     }
-  }
+  };
 });

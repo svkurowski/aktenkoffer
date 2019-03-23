@@ -6,11 +6,16 @@ jobs:
       - image: circleci/ruby:2.6.1-node
     steps:
       - checkout
-      - run: bundle install
+      - run: bundle
+      - run: yarn
       - run:
-          name: Lint with rubocop
+          name: RuboCop
           command: |
             bundle exec rubocop .
+      - run:
+          name: ESLint
+          command: |
+            yarn lint
   deploy:
     docker:
       - image: buildpack-deps:trusty
