@@ -5,9 +5,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   const fileInput = fileElement.querySelector('.file-input');
-
-  // NOTE Stopped working with .addEventListener('onchange')
-  fileInput.onchange = () => {
+  fileInput.addEventListener('change', () => {
     const label = fileElement.querySelector('.file-name');
 
     if (!fileInput.files.length) {
@@ -16,5 +14,5 @@ document.addEventListener('turbolinks:load', () => {
     }
 
     label.innerHTML = fileInput.files[0].name;
-  };
+  });
 });

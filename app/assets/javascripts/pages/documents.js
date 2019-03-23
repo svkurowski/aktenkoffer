@@ -10,21 +10,24 @@ document.addEventListener('turbolinks:load', () => {
   });
 
   documentForm.addEventListener('ajax:success', (event) => {
-    const [,, { status }] = event.detail;
+    const [,, xhr] = event.detail;
 
-    console.log(status);
+    if (xhr.status === 201) {
+      Turbolinks.visit(xhr.getResponseHeader('location'));
+    }
   });
 
   documentForm.addEventListener('ajax:error', (event) => {
     const [,, { status }] = event.detail;
 
+    // TODO Properly handle errors
     console.log(status);
   });
 });
 
 
 const waitUntilFileExists = () => {
-  const fileInput = document.querySelector(".file-input");
+  const fileInput = document.querySelector('.file-input');
 
   return new Promise(resolve => {
     setInterval(() => {

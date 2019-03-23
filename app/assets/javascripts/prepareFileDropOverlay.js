@@ -17,10 +17,7 @@ document.addEventListener('turbolinks:load', () => {
 
     dropOverlay.classList.remove('show');
     fileInput.files = event.dataTransfer.files;
-
-    if (fileInput.onchange) {
-      fileInput.onchange();
-    }
+    fileInput.dispatchEvent(new Event('change'));
   });
 
   document.body.addEventListener('dragleave', (event) => {
