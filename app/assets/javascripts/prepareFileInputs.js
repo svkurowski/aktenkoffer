@@ -19,28 +19,28 @@ document.addEventListener('turbolinks:load', () => {
   });
 
 
-  document.body.ondragenter = (event) => {
+  document.body.ondragenter = event => {
     event.preventDefault();
 
     dropOverlay.classList.add('show');
-  }
+  };
 
-  document.body.ondragover = (event) => {
+  document.body.ondragover = event => {
     event.preventDefault();
 
     event.dataTransfer.dropEffect = 'copy';
-  }
+  };
 
-  document.body.ondrop = (event) => {
+  document.body.ondrop = event => {
     event.preventDefault();
 
     dropOverlay.classList.remove('show');
     fileInput.files = event.dataTransfer.files;
-  }
+  };
 
-  document.body.ondragleave = (event) => {
+  document.body.ondragleave = event => {
     if (!event.clientX && !event.clientY) {
       dropOverlay.classList.remove('show');
     }
-  }
+  };
 });
