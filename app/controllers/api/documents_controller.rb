@@ -1,20 +1,22 @@
 module API
   class DocumentsController < API::BaseController
     def create
-      document = Document.new(document_params)
+      documents = params[:files].map { |file| { original_file: file } }
+      new_documents = Document.create(documents)
 
-      unless document.save
-        render json: document.errors, status: :unprocessable_entity
-        return
-      end
-
-      render json: document, status: :created, location: document
+      render json: documents, status: :created, location: location_for(new_documents)
     end
 
     private
 
-      def document_params
-        params.require(:document).permit(:original_file)
+      def document_batch_params
+        params.permit(:files)
+      end
+
+      def location_for(new_documents)
+        return new_documents.first if new_documents.one?
+
+        documents_path(new_documents: new_documents.map(&:id))
       end
   end
 end
