@@ -19,9 +19,11 @@ $ bin/rails server
 
 This project uses multiple linters to apply a common code style and catch common mistakes.
 
-`rubocop` helps us implement our agreed upon coding style. `reek` can help find potential candidates for refactorings. `rails_best_pratices` will help us pay attention to gotchas and quirks of Rails.
+### Ruby
 
-To run the linters manually, use the following commands:
+`RuboCop` helps us implement our agreed upon coding style. `reek` can help find potential candidates for refactorings. `rails_best_pratices` will help us pay attention to gotchas and quirks of Rails.
+
+To run the linters, use the following commands:
 
 ```sh
 $ bundle exec rubocop .
@@ -29,5 +31,16 @@ $ bundle exec reek .
 $ bundle exec rails_best_practices .
 ```
 
+### JavaScript
 
-`rubocop` is run on every PR automatically by the CI pipeline. The other should be run periodically by the developers to keep our high requirements of quality.
+We are using `ESLint` with the `airbnb-base` preset that follows the [Airbnb style guide](https://github.com/airbnb/javascript).
+
+To run ESLint, use
+
+```sh
+$ yarn lint
+```
+
+### Continous Integration
+
+Only `RuboCop` and `ESLint` are run on every Pull Request automatically by the CI pipeline. The other should be run periodically by the developers to keep our high requirements of quality.

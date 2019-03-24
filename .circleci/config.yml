@@ -1,16 +1,26 @@
 version: 2
 
 jobs:
-  lint:
+  rubocop:
     docker:
       - image: circleci/ruby:2.6.1-node
     steps:
       - checkout
-      - run: bundle install
+      - run: bundle
       - run:
-          name: Lint with rubocop
+          name: RuboCop
           command: |
             bundle exec rubocop .
+  eslint:
+    docker:
+      - image: circleci/ruby:2.6.1-node
+    steps:
+      - checkout
+      - run: yarn
+      - run:
+          name: ESLint
+          command: |
+            yarn lint
   deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -23,9 +33,12 @@ jobs:
 
 workflows:
   version: 2
-  lint:
+  rubocop:
     jobs:
-      - lint
+      - rubocop
+  eslint:
+    jobs:
+      - eslint
   deploy:
     jobs:
       - deploy:

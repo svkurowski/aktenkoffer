@@ -20,12 +20,6 @@ directories:
       enabled: false
     InstanceVariableAssumption:
       enabled: false
-    TooManyStatements:
-      max_statements: 10
-    DuplicateMethodCall:
-      allow_calls:
-        - format.html
-        - format.json
 
   "app/helpers":
     IrresponsibleModule:

@@ -1,0 +1,24 @@
+# Extend Airbnb default config without React
+extends: airbnb-base
+
+parserOptions:
+  ecmaVersion: 6
+
+env:
+  browser: true
+
+rules:
+  arrow-parens:
+    - error
+    - as-needed
+  curly:
+    - error
+    - all
+  max-len:
+    - error
+    - code: 140
+    - tabWidth: 2
+    - ignoreComments: true
+  no-param-reassign:
+    - error
+    - props: false

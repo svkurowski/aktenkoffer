@@ -1,9 +1,19 @@
 {
   "name": "aktenkoffer",
   "private": true,
+
+  "scripts": {
+    "lint": "eslint ."
+  },
+
   "dependencies": {
     "@fortawesome/fontawesome-free": "~5.7.2",
     "bulma": "~0.7.4",
     "bulma-tagsinput": "~2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "~5.15.3",
+    "eslint-config-airbnb-base": "~13.1.0",
+    "eslint-plugin-import": "~2.16.0"
   }
 }
