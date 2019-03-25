@@ -44,3 +44,9 @@ $ yarn lint
 ### Continous Integration
 
 Only `RuboCop` and `ESLint` are run on every Pull Request automatically by the CI pipeline. The other should be run periodically by the developers to keep our high requirements of quality.
+
+
+
+## Acknowledgements
+
++ Favicons by [twemoji](https://twemoji.twitter.com/)
