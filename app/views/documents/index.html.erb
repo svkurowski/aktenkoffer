@@ -43,7 +43,7 @@
 <%= will_paginate @documents %>
 
 
-<%= file_drop_overlay %>
+<%= file_drop_overlay(multiple: true) %>
 <%= form_with scope: :documents, url: api_documents_path, class: 'document-form is-hidden' do |f| %>
   <%= f.file_field :original_file, multiple: true, class: 'file-input' %>
 <% end %>
