@@ -2,9 +2,17 @@ module API
   class DocumentsController < API::BaseController
     def create
       documents = document_batch_params
-      new_documents = Document.create(documents)
 
-      render json: documents, status: :created, location: location_for(new_documents)
+      begin
+        Document.transaction do
+          @new_documents = Document.create!(documents)
+        end
+      rescue ActiveRecord::RecordInvalid
+        render json: documents, status: :unprocessable_entity
+        return
+      end
+
+      render json: documents, status: :created, location: location_for(@new_documents)
     end
 
     private
