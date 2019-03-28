@@ -1,7 +1,7 @@
 module API
   class DocumentsController < API::BaseController
     def create
-      documents = params[:documents][:original_file].map { |file| { original_file: file } }
+      documents = document_batch_params
       new_documents = Document.create(documents)
 
       render json: documents, status: :created, location: location_for(new_documents)
@@ -10,7 +10,7 @@ module API
     private
 
       def document_batch_params
-        params.require(:documents).permit(original_file: [])
+        params[:documents][:original_files].map { |file| { original_file: file } }
       end
 
       def location_for(new_documents)
