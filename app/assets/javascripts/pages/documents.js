@@ -1,3 +1,5 @@
+/* global ErrorNotification, Warning */
+
 document.addEventListener('turbolinks:load', () => {
   const documentForm = document.querySelector('.document-form');
   if (!documentForm) {
@@ -15,7 +17,13 @@ document.addEventListener('turbolinks:load', () => {
   documentForm.addEventListener('ajax:error', event => {
     const [,, { status }] = event.detail;
 
-    // TODO Properly handle errors
-    console.log(status);
+    if (status === 422) {
+      new ErrorNotification('Sending incorrect data, huh?').render();
+      return;
+    }
+
+    if (status === 500) {
+      new Warning('Something went wrong... Please try again later.').render();
+    }
   });
 });
