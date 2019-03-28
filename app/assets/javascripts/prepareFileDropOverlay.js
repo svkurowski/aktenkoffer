@@ -18,6 +18,10 @@ document.addEventListener('turbolinks:load', () => {
     dropOverlay.classList.remove('show');
     fileInput.files = event.dataTransfer.files;
     fileInput.dispatchEvent(new Event('change'));
+
+    if (fileInput.getAttribute('data-submit-on-drop') === 'true') {
+      Rails.fire(fileInput.form, 'submit');
+    }
   });
 
   document.body.addEventListener('dragleave', event => {
