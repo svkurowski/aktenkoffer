@@ -1,14 +1,12 @@
 <div id="document" class="columns">
   <div class="column is-two-thirds">
     <div class="box has-equal-height">
-      <% if @document.original_file.attached? %>
       <object data="<%= url_for @document.original_file %>" type="application/pdf">
         <p>
           This browser does not support embedding PDF files.
           <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.
         </p>
       </object>
-      <% end %>
     </div>
   </div>
 
