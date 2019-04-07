@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
-    @documents = Search::DocumentSearch.perform(params['query'])
+    @documents = documents_for(params)
     @documents = @documents.includes(:recipient, :sender)
                            .paginate(page: params[:page])
                            .order_by_acted_at
@@ -48,6 +48,12 @@ class DocumentsController < ApplicationController
 
   private
 
+    def documents_for(params)
+      return Document.where(id: params[:new_documents]) if params[:new_documents].present?
+
+      Search::DocumentSearch.perform(params[:query])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_document
       @document = Document.find(params[:id])
@@ -59,5 +65,9 @@ class DocumentsController < ApplicationController
                      .permit(:original_file, :title, :sender_id, :recipient_id, :sent_at, :received_at, :tag_names)
       result[:tag_names] = result[:tag_names]&.split(',')
       result
+    end
+
+    def query_params
+      params.permit(:query, :new_documents)
     end
 end
