@@ -1,5 +1,9 @@
 document.addEventListener('turbolinks:load', () => {
   const dropOverlay = document.querySelector('.file-drop-overlay');
+  if (!dropOverlay) {
+    return;
+  }
+
   const fileInput = document.querySelector('.file-input');
 
   document.body.addEventListener('dragenter', event => {
