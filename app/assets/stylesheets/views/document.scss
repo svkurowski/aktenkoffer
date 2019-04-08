@@ -1,19 +1,7 @@
 #document {
-  .description {
-    justify-content: center;
-  }
-
-  .content {
-    height: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2.5rem 1.5rem;
-  }
-
-  object {
-    width: 100%;
-    height: 75vh;
+  .file-preview {
+    flex-grow: 1;
+    min-height: 25rem;
   }
 
   .actions {

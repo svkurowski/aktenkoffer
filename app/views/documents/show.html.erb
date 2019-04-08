@@ -1,7 +1,7 @@
 <div id="document" class="columns">
   <div class="column is-two-thirds">
     <div class="box has-equal-height">
-      <object data="<%= url_for @document.original_file %>" type="application/pdf">
+      <object data="<%= url_for @document.original_file %>" type="application/pdf" class="file-preview">
         <p>
           This browser does not support embedding PDF files.
           <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.
@@ -11,8 +11,8 @@
   </div>
 
   <div class="column is-one-third">
-    <div class="box has-equal-height description">
-      <div class="content is-medium">
+    <div class="box has-equal-height">
+      <div class="content">
         <p>
           <strong>Title:</strong>
           <%= @document.title %>
