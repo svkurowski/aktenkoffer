@@ -38,6 +38,7 @@
           <div class="navbar-end">
             <%= link_to 'Documents', documents_path, class: 'navbar-item' %>
             <%= link_to 'Contacts', contacts_path, class: 'navbar-item' %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
           </div>
         </div>
     </nav>
