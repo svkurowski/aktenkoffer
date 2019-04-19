@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Aktenkoffer</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons provided by https://twemoji.twitter.com/ -->
+    <%= favicon_link_tag image_path('favicon/apple-touch-icon.png'), rel: 'icon', sizes: '180x180' %>
+    <%= favicon_link_tag image_path('favicon/favicon-32x32.png'), rel: 'icon', sizes: '320x320', type: 'image/png' %>
+    <%= favicon_link_tag image_path('favicon/favicon-16x16.png'), rel: 'icon', sizes: '16x16', type: 'image/png' %>
+    <%= favicon_link_tag image_path('favicon/favicon.ico'), rel: 'icon', type: 'image/x-icon' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container box">
+        <h2 class="title is-2">Log in</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <%= f.text_field :username, autofocus: true, class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <%= f.password_field :password, autocomplete: "current-password", class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field is-grouped is-grouped-right">
+            <% if devise_mapping.rememberable? %>
+              <p class="control">
+                <label class="checkbox">
+                  <%= f.check_box :remember_me %>
+                  Remember me
+                </label>
+              </p>
+            <% end %>
+            <p class="control">
+              <%= f.submit "Log in", class: 'button is-primary' %>
+            </p>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+
+      <% flash.each do |key, value| %>
+        <div class="notification">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>
+

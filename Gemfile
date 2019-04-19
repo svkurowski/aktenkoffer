@@ -23,6 +23,9 @@ gem 'aws-sdk-s3', '~> 1', require: false
 # Pagination
 gem 'will_paginate', '~> 3.1.6'
 
+# User authentication
+gem 'devise', '~> 4.7.2'
+
 # Tagging
 gem 'gutentag', '~> 2.5'
 
