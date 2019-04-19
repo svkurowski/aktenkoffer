@@ -34,14 +34,6 @@ module Aktenkoffer
       g.helper false
     end
 
-    authentication_name = ENV.fetch('AUTHENTICATION_NAME', nil)
-    authentication_password = ENV.fetch('AUTHENTICATION_PASSWORD', nil)
-    config.authentication_options = {
-      name: authentication_name,
-      password: authentication_password,
-      unless: -> { authentication_name.blank? || authentication_password.blank? }
-    }
-
     config.eager_load_paths << Rails.root.join('lib')
   end
 end
