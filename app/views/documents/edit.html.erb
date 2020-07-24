@@ -1,3 +1,19 @@
-<h1 class="title is-1">Editing Document</h1>
+<div id="document" class="columns">
+  <div class="column is-two-thirds">
+    <div class="box has-equal-height">
+      <object data="<%= url_for @document.original_file %>" type="application/pdf" class="file-preview">
+        <p>
+          This browser does not support embedding PDF files.
+          <%= link_to 'Click to download', @document.original_file, target: '_blank' %>.
+        </p>
+      </object>
+    </div>
+  </div>
 
-<%= render 'form', document: @document %>
+  <div class="column is-one-third">
+    <div class="box has-equal-height">
+      <div class="content">
+        <%= render 'form', document: @document %>
+      </div>
+    </div>
+  </div>
