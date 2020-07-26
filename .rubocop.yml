@@ -6,6 +6,7 @@ AllCops:
     - db/schema.rb
     - config/**/*
     - test/**/*
+    - node_modules/**/*
 
 
 Bundler/OrderedGems:
