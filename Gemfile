@@ -13,6 +13,8 @@ gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# Use webpack for JavaScript assets
+gem 'webpacker', '~> 5.1.1'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
