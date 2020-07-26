@@ -8,11 +8,11 @@ module API
           @new_documents = Document.create!(documents)
         end
       rescue ActiveRecord::RecordInvalid
-        render json: documents, status: :unprocessable_entity
+        render json: @new_documents, status: :unprocessable_entity
         return
       end
 
-      render json: documents, status: :created, location: location_for(@new_documents)
+      render json: @new_documents, status: :created, location: location_for(@new_documents)
     end
 
     private
