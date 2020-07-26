@@ -22,10 +22,10 @@ module IconHelper
   private
 
     def icon_wrapper_with(icon, size: :normal)
-      content_tag(:span, icon, class: "icon#{SIZE_CLASSES[size]}")
+      tag.span(icon, class: "icon#{SIZE_CLASSES[size]}")
     end
 
     def icon_element_for(icon_class)
-      content_tag(:i, '', class: ['fas', "fa-#{icon_class}"])
+      tag.i('', class: ['fas', "fa-#{icon_class}"])
     end
 end
