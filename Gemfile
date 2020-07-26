@@ -50,6 +50,7 @@ group :development do
   gem 'bullet'
 
   gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
   gem 'reek', require: false
   gem 'rails_best_practices', require: false
 end

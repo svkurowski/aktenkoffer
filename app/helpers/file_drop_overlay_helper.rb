@@ -12,9 +12,9 @@ module FileDropOverlayHelper
     end
 
     def default_overlay(drop_hint: 'Drop file here to upload.')
-      content_tag(:div, class: 'file-drop-overlay has-background-black-ter is-flex is-centered') do
-        content_tag(:div, class: 'drop-message has-text-light is-flex is-centered') do
-          content_tag(:p, class: 'is-size-4 has-text-centered') do
+      tag.div(class: 'file-drop-overlay has-background-black-ter is-flex is-centered') do
+        tag.div(class: 'drop-message has-text-light is-flex is-centered') do
+          tag.p(class: 'is-size-4 has-text-centered') do
             drop_hint
           end
         end

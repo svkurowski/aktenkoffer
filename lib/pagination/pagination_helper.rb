@@ -64,4 +64,4 @@ module PaginationHelper
   end
 end
 
-WillPaginate::ActionView::LinkRenderer.send(:include, PaginationHelper::BulmaRenderer)
+WillPaginate::ActionView::LinkRenderer.include(PaginationHelper::BulmaRenderer)
