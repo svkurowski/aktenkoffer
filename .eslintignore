@@ -1,1 +1,4 @@
 public/assets/*
+babel.config.js
+postcss.config.js
+config/webpack/*
