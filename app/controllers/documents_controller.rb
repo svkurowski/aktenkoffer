@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  include ActiveStorage::SetCurrent
+
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
