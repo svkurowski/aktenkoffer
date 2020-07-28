@@ -18,9 +18,8 @@ module Search
         return documents unless params.any? || (title_queries.present? && title_queries.any?)
 
         documents = filter_attributes(documents, title_queries)
-        documents = filter_attributes(documents, params)
 
-        documents
+        filter_attributes(documents, params)
       end
 
       private
