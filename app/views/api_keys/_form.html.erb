@@ -1,0 +1,24 @@
+<%= form_with model: api_key, local: true do |f| %>
+  <div class="field">
+    <%= f.label :description, class: 'label' %>
+    <div class="control">
+      <%= f.text_field :description, required: true, class: "input#{' is-danger' if api_key.errors[:description].present?}" %>
+    </div>
+
+    <% if api_key.errors[:description].present? %>
+      <p class="help is-danger">
+        Description <%= api_key.errors[:description].to_sentence %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="field is-grouped has-top-spacing">
+    <div class="control">
+      <%= f.submit 'Submit', class: 'button is-primary' %>
+    </div>
+
+    <div class="control">
+      <%= link_to 'Back', api_keys_path, class: 'button is-text' %>
+    </div>
+  </div>
+<% end %>

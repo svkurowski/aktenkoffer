@@ -1,0 +1,32 @@
+<h1 class="title is-1">API Keys</h1>
+
+<table class="table is-fullwidth is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @api_keys.each do |api_key| %>
+      <tr>
+        <td><%= link_to api_key.id, api_key %></td>
+        <td><%= api_key.description %></td>
+
+        <td class="actions">
+          <%= link_to edit_api_key_path(api_key) do %>
+            <%= icon_for(:edit) %>
+          <% end %>
+
+          <%= link_to api_key, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon_for(:delete) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New API Key', new_api_key_path, class: 'button is-rounded is-link is-pulled-right' %>
