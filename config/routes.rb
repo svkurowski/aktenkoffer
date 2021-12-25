@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :api_keys
   root 'documents#index'
 
   devise_for :users, controllers: { sessions: 'users/sessions' }

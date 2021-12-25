@@ -1,0 +1,16 @@
+<p>
+  <strong>ID:</strong>
+  <code><%= @api_key.id %></code>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @api_key.description %>
+</p>
+
+<p>
+  <strong>Secret:</strong>
+  <code><%= @secret %></code>
+</p>
+
+<%= link_to 'Edit', edit_api_key_path(@api_key) %>
