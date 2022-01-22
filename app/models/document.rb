@@ -10,6 +10,7 @@ class Document < ApplicationRecord
   validate :original_file_cannot_be_blank
 
   has_one_attached :original_file
+  after_commit :analyze_original_file_later
 
   def acted_at
     received_at || sent_at || created_at.to_date
@@ -55,5 +56,9 @@ class Document < ApplicationRecord
       #{table_name}.id #{direction}
     SQL
     order(Arel.sql(order_sql))
+  end
+
+  def analyze_original_file_later
+    AnalyzeDocumentJob.perform_later self if content.nil?
   end
 end
