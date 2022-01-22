@@ -1,6 +1,7 @@
 module IconHelper
   ICON_CLASSES = {
     briefcase: 'briefcase',
+    download: 'download',
     edit: 'pencil-alt',
     delete: 'trash-alt'
   }.freeze
