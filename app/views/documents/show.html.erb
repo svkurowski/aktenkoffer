@@ -51,6 +51,10 @@
         <hr class="is-divider"></hr>
 
         <div class="actions is-flex">
+          <%= link_to rails_blob_path(@document.original_file, disposition: "attachment") do %>
+            <%= icon_for(:download) %>
+          <% end %>
+
           <%= link_to edit_document_path(@document) do %>
             <%= icon_for(:edit) %>
           <% end %>
