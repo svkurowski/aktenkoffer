@@ -51,6 +51,10 @@
         <hr class="is-divider"></hr>
 
         <div class="actions is-flex">
+          <%= link_to '#', data: {action: 'toggle-modal', target: 'metadata-modal'}, aria: {label: 'Show Metadata'} do %>
+            <%= icon_for(:metadata) %>
+          <% end %>
+
           <%= link_to rails_blob_path(@document.original_file, disposition: "attachment") do %>
             <%= icon_for(:download) %>
           <% end %>
@@ -66,3 +70,16 @@
       </div>
     </div>
   </div>
+
+<div class="modal" id="metadata-modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <p>
+        <strong>Content:</strong>
+      </p>
+      <pre><%= @document.content %></pre>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>

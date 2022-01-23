@@ -3,7 +3,8 @@ module IconHelper
     briefcase: 'briefcase',
     download: 'download',
     edit: 'pencil-alt',
-    delete: 'trash-alt'
+    delete: 'trash-alt',
+    metadata: 'database'
   }.freeze
 
   SIZE_CLASSES = {
