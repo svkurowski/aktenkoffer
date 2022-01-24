@@ -8,25 +8,26 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   function closeAllModals() {
-    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+    (document.querySelectorAll('.modal') || []).forEach($modal => {
       closeModal($modal);
     });
   }
 
-  // Add a click event on buttons to open a specific modal
-  (document.querySelectorAll('[data-action="toggle-modal"]') || []).forEach(($trigger) => {
+  const modalTogglerSelector = '[data-action="toggle-modal"]';
+  document.querySelectorAll(modalTogglerSelector).forEach($trigger => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
-    console.log($target);
 
-    $trigger.addEventListener('click', (e) => {
+    $trigger.addEventListener('click', e => {
       openModal($target);
       e.preventDefault();
     });
   });
 
-  // Add a click event on various child elements to close the parent modal
-  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+  const modalCloseSelector = '.modal-background, .modal-close, '
+                                + '.modal-card-head .delete, '
+                                + '.modal-card-foot .button';
+  document.querySelectorAll(modalCloseSelector).forEach($close => {
     const $target = $close.closest('.modal');
 
     $close.addEventListener('click', () => {
@@ -35,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   });
 
   // Add a keyboard event to close all modals
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener('keydown', event => {
     const e = event || window.event;
 
     if (e.keyCode === 27) { // Escape key
