@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
       return
     end
 
-    redirect_to @contact, notice: 'Contact was successfully updated.'
+    redirect_to contacts_url, notice: 'Contact was successfully updated.'
   end
 
   def destroy
