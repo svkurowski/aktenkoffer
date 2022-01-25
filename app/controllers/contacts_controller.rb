@@ -2,7 +2,12 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:edit, :update, :destroy]
 
   def index
-    @contacts = Contact.all
+    @home_contact = helpers.home_contact
+    @contacts = if @home_contact.nil?
+      Contact.all
+    else
+      Contact.where.not(id: @home_contact.id)
+    end
   end
 
   def new

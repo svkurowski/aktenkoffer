@@ -35,5 +35,7 @@ module Aktenkoffer
     end
 
     config.eager_load_paths << Rails.root.join('lib')
+
+    config.home_contact_id = ENV['HOME_CONTACT_ID']
   end
 end

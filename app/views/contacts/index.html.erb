@@ -1,5 +1,36 @@
 <h1 class="title is-1">Contacts</h1>
 
+<% if @home_contact.nil? %>
+  <article class="message is-info">
+    <div class="message-header">
+      <p>Missing Home Contact</p>
+    </div>
+    <div class="message-body">
+      No home contact is set! Some functionality will be missing.
+      <%= link_to 'Create yours', new_contact_path %> and configure it
+      using the <code>HOME_CONTACT_ID</code> environment variable.
+    </div>
+  </article>
+<% else %>
+  <article class="message">
+    <div class="message-header">
+      <p>Home Contact</p>
+    </div>
+    <div class="message-body">
+      <div class="block">
+        <strong><%= @home_contact.name %></strong>
+      </div>
+      <div class="block">
+        <%= @home_contact.address %>
+      </div>
+
+      <div class="is-clearfix">
+        <%= link_to 'Edit', edit_contact_path(@home_contact), class: 'button is-rounded is-link is-pulled-right' %>
+      </div>
+    </div>
+  </article>
+<% end %>
+
 <table class="table is-fullwidth is-striped is-hoverable">
   <thead>
     <tr>
