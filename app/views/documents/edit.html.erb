@@ -1,6 +1,6 @@
-<div id="document" class="columns">
+<div class="document-detail columns">
   <div class="column is-two-thirds">
-    <div class="box has-equal-height">
+    <div class="box">
       <object data="<%= object_url_for @document.original_file %>" type="application/pdf" class="file-preview">
         <p>
           This browser does not support embedding PDF files.
@@ -11,9 +11,10 @@
   </div>
 
   <div class="column is-one-third">
-    <div class="box has-equal-height">
+    <div class="box">
       <div class="content">
         <%= render 'form', document: @document %>
       </div>
     </div>
   </div>
+</div>
