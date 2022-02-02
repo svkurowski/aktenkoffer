@@ -1,39 +1,7 @@
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    align-content: stretch;
-}
-
-.main-section {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-}
-
 .title.has-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.box {
-  &.has-equal-height {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 hr.is-divider {

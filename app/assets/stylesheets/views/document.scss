@@ -1,9 +1,7 @@
-#document {
-  flex-grow: 1;
-
+.document-detail {
   .file-preview {
-    flex-grow: 1;
-    min-height: 25rem;
+    width: 100%;
+    min-height: 75vh;
   }
 
   .actions {
