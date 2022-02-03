@@ -3,7 +3,7 @@ version: 2
 jobs:
   rubocop:
     docker:
-      - image: circleci/ruby:2.6.9-node
+      - image: circleci/ruby:3.1.0-node
     steps:
       - checkout
       - run: bundle
@@ -13,7 +13,7 @@ jobs:
             bundle exec rubocop .
   eslint:
     docker:
-      - image: circleci/ruby:2.6.9-node
+      - image: circleci/ruby:3.1.0-node
     steps:
       - checkout
       - run: yarn
