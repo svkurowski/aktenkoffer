@@ -28,7 +28,7 @@ module Search
           return {} unless query.present?
 
           query
-            .split(' ')
+            .split
             .map { |param| param.split(':') }
             .map { |(key, value)| { key => value } }
             .reduce(&:merge)

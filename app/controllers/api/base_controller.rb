@@ -10,7 +10,7 @@ module API
         return if user_signed_in?
 
         authenticate_with_http_token do |token, _|
-          token_parts = token.split(' ')
+          token_parts = token.split
           break false if token_parts.length != 2
 
           api_key_id = token_parts[0]

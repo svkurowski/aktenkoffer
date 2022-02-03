@@ -18,14 +18,14 @@ module PaginationHelper
     protected
 
       def page_number(page)
-        return tag(:li, tag(:span, page), class: 'pagination-link is-current') if page == current_page
+        return tag(:li, tag.span(page), class: 'pagination-link is-current') if page == current_page
 
         link_options = @options[:link_options] || {}
-        tag :li, link(page, page, link_options.merge(rel: rel_value(page), class: 'pagination-link'))
+        tag.li(link(page, page, link_options.merge(rel: rel_value(page), class: 'pagination-link')))
       end
 
       def gap
-        tag :li, '<span class="pagination-ellipsis">&hellip;</span>'
+        tag.li('<span class="pagination-ellipsis">&hellip;</span>')
       end
 
       def content_for_pagination(pages, page_prev, page_next)
@@ -59,7 +59,7 @@ module PaginationHelper
 
         return tag(:li, link(text, page, link_options), class: classname) if page
 
-        tag :li, tag(:span, text), class: classname, disabled: true
+        tag :li, tag.span(text), class: classname, disabled: true
       end
   end
 end
