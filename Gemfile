@@ -23,7 +23,7 @@ gem 'turbolinks', '~> 5'
 gem 'aws-sdk-s3', '~> 1', require: false
 
 # Pagination
-gem 'will_paginate', '~> 3.3'
+gem 'kaminari'
 
 # User authentication
 gem 'devise', '~> 4.8.1'

@@ -133,6 +133,18 @@ GEM
       reline (>= 0.3.0)
     jmespath (1.4.0)
     json (2.3.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     kwalify (0.7.2)
     loofah (2.13.0)
       crass (~> 1.0.2)
@@ -302,7 +314,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.4)
@@ -319,6 +330,7 @@ DEPENDENCIES
   debug
   devise (~> 4.8.1)
   gutentag (~> 2.5)
+  kaminari
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)
   rails (~> 7.0.1)
@@ -334,7 +346,6 @@ DEPENDENCIES
   web-console
   webdrivers
   webpacker (~> 5.x)
-  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 3.1.0p0
