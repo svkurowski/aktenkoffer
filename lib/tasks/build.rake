@@ -7,5 +7,6 @@ namespace :build do
 
   desc 'Performs a release build'
   task release: [:lint] do
+    # Relies on dependency tasks
   end
 end
