@@ -6,7 +6,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = documents_for(params)
     @documents = @documents.includes(:recipient, :sender)
-                           .paginate(page: params[:page])
+                           .page(params[:page])
                            .order_by_acted_at
   end
 
