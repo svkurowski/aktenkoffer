@@ -1,5 +1,7 @@
 /* global ErrorNotification, Warning */
 
+import Turbolinks from 'turbolinks';
+
 document.addEventListener('turbolinks:load', () => {
   const documentForm = document.querySelector('.document-form');
   if (!documentForm) {

@@ -18,7 +18,7 @@ import './elements/tagInputs';
 import './pages/documents';
 
 (() => {
-    Rails.start();
-    ActiveStorage.start();
-    Turbolinks.start();
+  Rails.start();
+  ActiveStorage.start();
+  Turbolinks.start();
 })();
