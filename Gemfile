@@ -20,7 +20,7 @@ gem 'jsbundling-rails'
 gem 'turbolinks', '~> 5'
 
 # Use AWS S3 for ActiveStorage
-gem 'aws-sdk-s3', '~> 1', require: false
+gem "aws-sdk-s3", require: false
 
 # Pagination
 gem 'kaminari'
