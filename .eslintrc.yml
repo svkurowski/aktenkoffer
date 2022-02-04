@@ -7,10 +7,6 @@ parserOptions:
 env:
   browser: true
 
-globals:
-  Rails: true
-  Turbolinks: true
-
 rules:
   arrow-parens:
     - error
