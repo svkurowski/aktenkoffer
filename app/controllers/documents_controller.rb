@@ -14,10 +14,21 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @document = Document.new
+    document_params = params.fetch(:document, {})
+    selections = document_params.permit(:sender_id, :recipient_id)
+    @document = Document.new(selections)
+
+    @sender_options = contact_options(@document.sender, document_params[:sender_filter])
+    @recipient_options = contact_options(@document.recipient, document_params[:recipient_filter])
   end
 
   def edit
+    document_params = params.fetch(:document, {})
+    selections = document_params.permit(:sender_id, :recipient_id)
+    @document.assign_attributes(selections)
+
+    @sender_options = contact_options(@document.sender, document_params[:sender_filter])
+    @recipient_options = contact_options(@document.recipient, document_params[:recipient_filter])
   end
 
   def create
@@ -71,5 +82,11 @@ class DocumentsController < ApplicationController
 
     def query_params
       params.permit(:query, :new_documents)
+    end
+
+    def contact_options(current, filter)
+      options = Contact.where('name ILIKE ?', "%#{filter}%")
+      options = options.or(Contact.where(id: current.id)) unless current.nil?
+      options.order(:name)
     end
 end

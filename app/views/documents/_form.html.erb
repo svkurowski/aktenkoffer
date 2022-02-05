@@ -38,18 +38,14 @@
   <div class="field">
     <label class="label">Sender</label>
     <div class="control is-expanded">
-      <div class="select is-fullwidth">
-        <%= f.collection_select(:sender_id, Contact.all, :id, :name, include_blank: true) %>
-      </div>
+      <%= render 'contacts/select', form: f, model: @document, field: :sender, contacts: sender_options %>
     </div>
   </div>
 
   <div class="field">
     <label class="label">Recipient</label>
     <div class="control is-expanded">
-      <div class="select is-fullwidth">
-        <%= f.collection_select(:recipient_id, Contact.all, :id, :name, include_blank: true) %>
-      </div>
+      <%= render 'contacts/select', form: f, model: @document, field: :recipient, contacts: recipient_options %>
     </div>
   </div>
 

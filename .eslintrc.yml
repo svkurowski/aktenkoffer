@@ -1,8 +1,11 @@
 # Extend Airbnb default config without React
-extends: airbnb-base
+extends:
+  - airbnb-base
+  - airbnb-typescript/base
 
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: 13
+  project: './tsconfig.json'
 
 env:
   browser: true
@@ -16,9 +19,18 @@ rules:
     - all
   max-len:
     - error
-    - code: 140
-    - tabWidth: 2
-    - ignoreComments: true
+    -
+      code: 140
+      tabWidth: 2
+      ignoreComments: true
   no-param-reassign:
     - error
-    - props: false
+    -
+      props: false
+  '@typescript-eslint/explicit-function-return-type': off
+
+overrides:
+  -
+    files: ['*.ts', '*.tsx']
+    rules:
+      '@typescript-eslint/explicit-function-return-type': ['error']

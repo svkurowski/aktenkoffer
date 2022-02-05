@@ -1,0 +1,12 @@
+.dropdown.is-fullwidth, .dropdown.is-fullwidth * {
+  width: 100%;
+}
+
+.dropdown.is-select .dropdown-trigger button {
+  text-align: left;
+}
+
+.dropdown .dropdown-content .is-scrollable-select {
+  max-height: 30rem;
+  overflow-y: auto;
+}
