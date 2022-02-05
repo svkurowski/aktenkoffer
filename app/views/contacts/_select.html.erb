@@ -1,0 +1,32 @@
+<% url_options = { action: (model.respond_to?(:new_record?) && model.new_record?) ? :new : :edit } %>
+<div data-controller="select-contact" data-select-contact-update-url-value="<%= polymorphic_url(model, url_options) %>" data-select-contact-target="dropdown" class="dropdown is-fullwidth is-select">
+    <% dropdown_id = dom_id(model, "#{field}_select_dropdown") %>
+    <div class="dropdown-trigger">
+        <%= form.hidden_field "#{field}_id", data: {'select-contact-target': 'selectedValueField'} %>
+        <button data-action="click->select-contact#toggle" class="button" aria-haspopup="true" aria-controls="<%= dropdown_id %>">
+        <span data-select-contact-target="selectedLabel"><%= model.send(field)&.name %></span>
+        <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+        </button>
+    </div>
+    <div class="dropdown-menu" id="<%= dropdown_id %>" role="menu">
+        <div class="dropdown-content">
+        <div class="dropdown-item">
+            <%= form.text_field "#{field}_filter", data: {'select-contact-target': 'filterInput', 'action': 'input->select-contact#filterChange'}, class: 'input is-small', placeholder: 'Filter contacts...' %>
+        </div>
+        <hr class="dropdown-divider">
+        <%= turbo_frame_tag dom_id(model, "#{field}_options"), class: 'contents', data: {'select-contact-target': 'contactOptionsFrame'} do %>
+            <div class="is-scrollable-select">
+                <% contacts.each do |contact| %>
+                    <% is_active_class = contact == model.send(field) ? ' is-active' : '' %>
+                    <a data-select-contact-target="option" data-action="click->select-contact#select" data-value="<%= contact.id %>" class="dropdown-item <%= is_active_class %>">
+                        <%= contact.name %>
+                    </a>
+                <% end %>
+            </div>
+            <%= link_to 'Create new contact...', new_contact_path, class: 'dropdown-item', target: '_blank' %>
+        <% end %>
+        </div>
+    </div>
+</div>
