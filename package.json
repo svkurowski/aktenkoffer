@@ -8,11 +8,11 @@
   "dependencies": {
     "@creativebulma/bulma-tagsinput": "^1.0.3",
     "@fortawesome/fontawesome-free": "~5.7.2",
+    "@hotwired/turbo-rails": "^7.1.1",
     "@rails/activestorage": "^7.0.1",
     "@rails/ujs": "^7.0.1",
     "bulma": "~0.9.3",
-    "esbuild": "^0.14.18",
-    "turbolinks": "^5.2.0"
+    "esbuild": "^0.14.18"
   },
   "devDependencies": {
     "eslint": "^8.3.0",

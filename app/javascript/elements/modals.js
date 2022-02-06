@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   function openModal($el) {
     $el.classList.add('is-active');
   }

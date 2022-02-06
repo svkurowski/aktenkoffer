@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   const navbarBurgers = document.querySelectorAll('.navbar-burger');
   navbarBurgers.forEach(el => {
     el.addEventListener('click', () => {

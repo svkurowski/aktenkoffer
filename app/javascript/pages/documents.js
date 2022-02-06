@@ -1,30 +1,21 @@
 /* global ErrorNotification, Warning */
 
-import Turbolinks from 'turbolinks';
+import { Turbo } from '@hotwired/turbo-rails';
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   const documentForm = document.querySelector('.document-form');
   if (!documentForm) {
     return;
   }
 
-  documentForm.addEventListener('ajax:success', event => {
-    const [,, xhr] = event.detail;
-
-    if (xhr.status === 201) {
-      Turbolinks.visit(xhr.getResponseHeader('location'));
-    }
-  });
-
-  documentForm.addEventListener('ajax:error', event => {
-    const [,, { status }] = event.detail;
-
-    if (status === 422) {
+  documentForm.addEventListener('turbo:submit-end', event => {
+    const { detail: { fetchResponse: { response } } } = event;
+    const { status } = response;
+    if (status === 201) {
+      Turbo.visit(response.headers.get('location'));
+    } else if (status === 422) {
       new ErrorNotification('Sending incorrect data, huh?').render();
-      return;
-    }
-
-    if (status === 500) {
+    } else {
       new Warning('Something went wrong... Please try again later.').render();
     }
   });

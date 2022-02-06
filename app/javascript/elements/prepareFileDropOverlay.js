@@ -1,6 +1,6 @@
 import Rails from '@rails/ujs';
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   const dropOverlay = document.querySelector('.file-drop-overlay');
   if (!dropOverlay) {
     return;
