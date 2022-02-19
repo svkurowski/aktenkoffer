@@ -4,10 +4,12 @@
     <div class="dropdown-trigger">
         <%= form.hidden_field "#{field}_id", data: {'select-contact-target': 'selectedValueField'} %>
         <button data-action="click->select-contact#toggle" class="button" aria-haspopup="true" aria-controls="<%= dropdown_id %>">
-        <span data-select-contact-target="selectedLabel"><%= model.send(field)&.name %></span>
-        <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
+            <span data-select-contact-target="selectedLabel">
+                <%= label_for_contact(model.send(field)) %>
+            </span>
+            <div class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </div>
         </button>
     </div>
     <div class="dropdown-menu" id="<%= dropdown_id %>" role="menu">
@@ -21,7 +23,7 @@
                 <% contacts.each do |contact| %>
                     <% is_active_class = contact == model.send(field) ? ' is-active' : '' %>
                     <a data-select-contact-target="option" data-action="click->select-contact#select" data-value="<%= contact.id %>" class="dropdown-item <%= is_active_class %>">
-                        <%= contact.name %>
+                        <%= label_for_contact(contact) %>
                     </a>
                 <% end %>
             </div>

@@ -4,6 +4,7 @@ module IconHelper
     download: 'download',
     edit: 'pencil-alt',
     delete: 'trash-alt',
+    home: 'house',
     metadata: 'database'
   }.freeze
 

@@ -1,4 +1,9 @@
-.dropdown.is-fullwidth, .dropdown.is-fullwidth * {
+.dropdown.is-fullwidth, .dropdown.is-fullwidth,
+.dropdown.is-fullwidth .dropdown-menu,
+.dropdown.is-fullwidth .dropdown-menu .dropdown-content,
+.dropdown.is-fullwidth .dropdown-trigger,
+.dropdown.is-fullwidth .dropdown-trigger > button,
+.dropdown.is-fullwidth .dropdown-trigger > button > span {
   width: 100%;
 }
 
