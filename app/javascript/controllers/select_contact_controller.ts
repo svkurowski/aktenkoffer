@@ -50,15 +50,16 @@ export default class SelectContactController extends Controller {
     event.preventDefault();
 
     const { target } = event;
-    const { dataset: { value: selectedValue } } = target;
-    const labelOfSelected = target.innerText;
+    const targetOption = target.closest('a.dropdown-item')! as HTMLElement;
+    const { dataset: { value: selectedValue } } = targetOption;
+    const labelOfSelected = targetOption.innerHTML;
 
     this.selectedValueFieldTarget.value = selectedValue || '';
-    this.selectedLabelTarget.innerText = labelOfSelected;
+    this.selectedLabelTarget.innerHTML = labelOfSelected;
     this.optionTargets
-      .filter(e => e !== target)
+      .filter(e => e !== targetOption)
       .forEach(e => e.classList.remove(SelectContactController.activeDropdownItemClass));
-    target.classList.add(SelectContactController.activeDropdownItemClass);
+    targetOption.classList.add(SelectContactController.activeDropdownItemClass);
 
     this.closeDropdown();
   }
