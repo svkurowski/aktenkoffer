@@ -21,15 +21,6 @@ jobs:
           name: Lint JavaScript & Typescript assets
           command: |
             yarn lint
-  deploy:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - checkout
-      - run:
-          name: Deploy master to Heroku
-          command: |
-            git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
   version: 2
@@ -39,9 +30,3 @@ workflows:
   eslint:
     jobs:
       - eslint
-  deploy:
-    jobs:
-      - deploy:
-          filters:
-            branches:
-              only: master
