@@ -28,7 +28,7 @@ class APIKeysController < ApplicationController
       flash.now[:notice] = 'API key was successfully created.'
       render :create
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +37,7 @@ class APIKeysController < ApplicationController
     if @api_key.update(api_key_params)
       redirect_to @api_key, notice: 'API key was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

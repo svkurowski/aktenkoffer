@@ -21,7 +21,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     unless @contact.save
-      render :new
+      render :new, status: :unprocessable_entity
       return
     end
 
@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
 
   def update
     unless @contact.update(contact_params)
-      render :edit
+      render :edit, status: :unprocessable_entity
       return
     end
 

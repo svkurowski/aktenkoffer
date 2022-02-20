@@ -1,4 +1,4 @@
-<%= form_with model: api_key, local: true do |f| %>
+<%= form_with model: api_key, local: true, data: {turbo: false} do |f| %>
   <div class="field">
     <%= f.label :description, class: 'label' %>
     <div class="control">

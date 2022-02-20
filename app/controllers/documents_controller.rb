@@ -35,7 +35,9 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
 
     unless @document.save
-      render :new
+      @sender_options = contact_options(@document.sender, document_params[:sender_filter])
+      @recipient_options = contact_options(@document.recipient, document_params[:recipient_filter])
+      render :new, status: :unprocessable_entity
       return
     end
 
@@ -46,7 +48,7 @@ class DocumentsController < ApplicationController
     # The original_file attachment is readonly. We enforce this in the controller
     # because model validations do not support ActiveStorage attachments.
     unless @document.update(document_params.except(:original_file))
-      render :edit
+      render :edit, status: :unprocessable_entity
       return
     end
 
