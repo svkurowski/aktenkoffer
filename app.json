@@ -1,0 +1,51 @@
+{
+  "name": "Aktenkoffer",
+  "description": "💼 Personal document management made easy.",
+  "repository": "https://github.com/svkurowski/aktenkoffer",
+  "keywords": ["personal", "document", "management", "CRM"],
+  "env": {
+    "SECRET_KEY_BASE": {
+      "description": "Used as the input secret to the application's key generator.",
+      "generator": "secret"
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "description": "The AWS access key associated with an IAM user or role that can access the S3 bucket."
+    },
+    "AWS_BUCKET": {
+      "description": "The name of the S3 bucket to use."
+    },
+    "AWS_DEFAULT_REGION": {
+      "description": "The AWS Region in which the S3 bucket resides."
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "description": "The secret key associated with the access key."
+    },
+    "LANG": {
+      "description": "The language to display in the user interface.",
+      "value": "en_US.UTF-8"
+    },
+    "RACK_ENV": {
+      "value": "production"
+    },
+    "RAILS_ENV": {
+      "value": "production"
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "value": "enabled"
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "value": "enabled"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": { "version": "13" }
+    }
+  ],
+  "buildpacks": [
+    { "url": "heroku/ruby" },
+    { "url": "heroku/nodejs" },
+    { "url": "heroku-community/apt" }
+  ]
+}

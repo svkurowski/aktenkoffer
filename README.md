@@ -31,6 +31,8 @@ We use the home address in various places to offer a better user experience.
 This repository includes some configuration that enables easy installation of Aktenkoffer on Heroku.
 All functionality works even when running in Heroku's free tier.
 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Update
 ```sh
 $ bundle install
