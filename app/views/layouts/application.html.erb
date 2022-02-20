@@ -38,6 +38,14 @@
           <div class="navbar-end">
             <%= link_to 'Documents', documents_path, class: 'navbar-item' %>
             <%= link_to 'Contacts', contacts_path, class: 'navbar-item' %>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Settings
+              </a>
+              <div class="navbar-dropdown">
+                <%= link_to 'API Keys', api_keys_path, class: 'navbar-item' %>
+              </div>
+            </div>
             <%= link_to 'Logout', destroy_user_session_path, data: {turbo_method: :delete}, class: 'navbar-item' %>
           </div>
         </div>
