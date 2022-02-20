@@ -1,3 +1,7 @@
+[![License](https://img.shields.io/github/license/svkurowski/aktenkoffer)](LICENSE)
+[![Deploy to Heroku](https://img.shields.io/badge/%E2%86%91_Deploy_to-Heroku-7056bf.svg)](https://heroku.com/deploy)
+[![Build status](https://img.shields.io/circleci/build/github/svkurowski/aktenkoffer)](https://app.circleci.com/pipelines/github/svkurowski/aktenkoffer)
+
 # Usage
 
 ## Installation
@@ -31,7 +35,7 @@ We use the home address in various places to offer a better user experience.
 This repository includes some configuration that enables easy installation of Aktenkoffer on Heroku.
 All functionality works even when running in Heroku's free tier.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Update
 ```sh
