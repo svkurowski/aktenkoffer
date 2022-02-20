@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run: yarn
       - run:
-          name: ESLint
+          name: Lint JavaScript & Typescript assets
           command: |
             yarn lint
   deploy:
