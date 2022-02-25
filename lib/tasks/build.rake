@@ -6,7 +6,7 @@ namespace :build do
   end
 
   desc 'Performs a release build'
-  task release: ['zeitwerk:check', :lint] do
+  task release: ['zeitwerk:check', :lint, 'test:system'] do
     # Relies on dependency tasks
   end
 end
