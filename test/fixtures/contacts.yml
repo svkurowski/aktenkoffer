@@ -1,9 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address: MyString
+  name: My partner and me
 
 two:
-  name: MyString
-  address: MyString
+  name: John Smith
+  address: |
+    132, Doe Street,
+    Kingston, New York 12401
+    United States
+
+unused:
+  name: Jane Doesntlikemail
+  address: |
+    645, Do not send Street,
+    Kingston, New York 12401
+    United States
+

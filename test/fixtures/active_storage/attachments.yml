@@ -1,0 +1,6 @@
+# Read about ActiveStorage fixtures at http://api.rubyonrails.org/classes/ActiveStorage/FixtureSet.html
+
+document_one_original_file:
+  name: original_file
+  record: one (Document)
+  blob: original_file_one_blob

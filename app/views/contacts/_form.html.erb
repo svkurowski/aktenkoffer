@@ -1,6 +1,6 @@
 <%= form_with model: contact, local: true do |f| %>
   <div class="field">
-    <label class="label">Name</label>
+    <%= f.label :name, 'Name', class: 'label' %>
     <div class="control">
       <%= f.text_field :name, class: "input#{' is-danger' if contact.errors[:name].present?}" %>
     </div>
@@ -14,7 +14,7 @@
 
 
   <div class="field">
-    <label class="label">Address</label>
+    <%= f.label :address, 'Address', class: 'label' %>
     <div class="control">
       <%= f.text_area :address, class: 'textarea' %>
     </div>

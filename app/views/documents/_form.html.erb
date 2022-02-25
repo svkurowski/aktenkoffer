@@ -1,7 +1,7 @@
 <%= form_with model: document, local: true do |f| %>
   <% if document.new_record? %>
     <div class="field">
-      <label class="label">Document</label>
+      <%= f.label :original_file, 'Document', class: 'label' %>
       <div class="file has-name<%= ' is-danger' if document.errors[:original_file].present? %>">
         <label class="file-label">
           <%= f.file_field :original_file, class: 'file-input' %>
@@ -29,42 +29,42 @@
   <% end %>
 
   <div class="field">
-    <label class="label">Title</label>
+    <%= f.label :title, 'Title', class: 'label' %>
     <div class="control">
       <%= f.text_field :title, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Sender</label>
+    <%= f.label :sender_id, 'Sender', class: 'label' %>
     <div class="control is-expanded">
       <%= render 'contacts/select', form: f, model: @document, field: :sender, contacts: sender_options %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Recipient</label>
+    <%= f.label :recipient_id, 'Recipient', class: 'label' %>
     <div class="control is-expanded">
       <%= render 'contacts/select', form: f, model: @document, field: :recipient, contacts: recipient_options %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Sent at</label>
+    <%= f.label :sent_at, 'Sent at', class: 'label' %>
     <div class="control is-flex">
       <%= f.date_field :sent_at, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Received at</label>
+    <%= f.label :received_at, 'Received at', class: 'label' %>
     <div class="control is-flex">
       <%= f.date_field :received_at, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Tags</label>
+    <%= f.label :tag_names, 'Tags', class: 'label' %>
     <div class="control">
       <%= f.text_field :tag_names, type: 'tags', value: document.tag_names.join(',') %>
     </div>
