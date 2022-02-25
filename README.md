@@ -61,6 +61,18 @@ $ yarn install
 $ bin/rails server
 ```
 
+## Testing
+
+We use system tests to avoid regressions:
+
+```sh
+$ bin/rails test:system # use HEADLESS=false to disable headless mode
+........
+
+Finished in 7.494301s, 1.0675 runs/s, 1.0675 assertions/s.
+8 runs, 8 assertions, 0 failures, 0 errors, 0 skips
+```
+
 ## Linting
 
 This project uses multiple linters to apply a common code style and catch common mistakes.
