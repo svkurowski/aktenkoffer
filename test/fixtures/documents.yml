@@ -3,13 +3,6 @@
 one:
   title: MyString
   sender: one
-  recipient: one
-  sent_at: 2018-11-25
-  received_at: 2018-11-25
-
-two:
-  title: MyString
-  sender: two
   recipient: two
-  sent_at: 2018-11-25
+  sent_at: 2018-11-26
   received_at: 2018-11-25

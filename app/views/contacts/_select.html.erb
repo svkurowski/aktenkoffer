@@ -3,7 +3,7 @@
     <% dropdown_id = dom_id(model, "#{field}_select_dropdown") %>
     <div class="dropdown-trigger">
         <%= form.hidden_field "#{field}_id", data: {'select-contact-target': 'selectedValueField'} %>
-        <button data-action="click->select-contact#toggle" class="button" aria-haspopup="true" aria-controls="<%= dropdown_id %>">
+        <button data-action="click->select-contact#toggle" title="Select <%= model.class.human_attribute_name(field) %>" class="button" aria-haspopup="true" aria-controls="<%= dropdown_id %>">
             <span data-select-contact-target="selectedLabel">
                 <%= label_for_contact(model.send(field)) %>
             </span>
@@ -22,7 +22,7 @@
             <div class="is-scrollable-select">
                 <% contacts.each do |contact| %>
                     <% is_active_class = contact == model.send(field) ? ' is-active' : '' %>
-                    <a data-select-contact-target="option" data-action="click->select-contact#select" data-value="<%= contact.id %>" class="dropdown-item <%= is_active_class %>">
+                    <a data-select-contact-target="option" data-action="click->select-contact#select" data-value="<%= contact.id %>" href="#" class="dropdown-item <%= is_active_class %>">
                         <%= label_for_contact(contact) %>
                     </a>
                 <% end %>

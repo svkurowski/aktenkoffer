@@ -3,6 +3,9 @@ require 'application_system_test_case'
 class DocumentsTest < ApplicationSystemTestCase
   setup do
     @document = documents(:one)
+    @unused_contact = contacts(:unused)
+
+    login()
   end
 
   test 'visiting the index' do
@@ -10,42 +13,47 @@ class DocumentsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Documents'
   end
 
-  test 'creating a Document' do
+  test 'creating a document' do
     visit documents_url
     click_on 'New Document'
 
-    fill_in 'Received At', with: @document.received_at
-    fill_in 'Recipient', with: @document.recipient_id
-    fill_in 'Sender', with: @document.sender_id
-    fill_in 'Sent At', with: @document.sent_at
+    attach_file('Document', file_fixture('example.pdf'), make_visible: true)
+    fill_in 'Received at', with: @document.received_at
+    click_on 'Select Recipient'
+    click_on @document.recipient.name
+    click_on 'Select Sender'
+    click_on @document.sender.name
+    fill_in 'Received at', with: @document.received_at
+    fill_in 'Sent at', with: @document.sent_at
     fill_in 'Title', with: @document.title
-    click_on 'Create Document'
+    click_on 'Submit'
 
     assert_text 'Document was successfully created'
-    click_on 'Back'
   end
 
-  test 'updating a Document' do
+  test 'updating a document' do
     visit documents_url
-    click_on 'Edit', match: :first
+    click_on 'Show', match: :first
+    click_on 'Edit', match: :one
 
-    fill_in 'Received At', with: @document.received_at
-    fill_in 'Recipient', with: @document.recipient_id
-    fill_in 'Sender', with: @document.sender_id
-    fill_in 'Sent At', with: @document.sent_at
+    fill_in 'Received at', with: @document.received_at
+    click_on 'Select Recipient'
+    click_on @unused_contact.name
+    click_on 'Select Sender'
+    click_on @document.recipient.name
+    fill_in 'Sent at', with: @document.sent_at
     fill_in 'Title', with: @document.title
-    click_on 'Update Document'
+    click_on 'Submit'
 
     assert_text 'Document was successfully updated'
-    click_on 'Back'
   end
 
-  test 'destroying a Document' do
+  test 'destroying a document' do
     visit documents_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    click_on 'Show', match: :first
 
-    assert_text 'Document was successfully destroyed'
+    click_on 'Delete', match: :one
+
+    assert_text 'Document was successfully deleted'
   end
 end

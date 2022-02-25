@@ -47,7 +47,7 @@
         <td><%= contact.address %></td>
 
         <td class="actions">
-          <%= link_to edit_contact_path(contact) do %>
+          <%= link_to edit_contact_path(contact), title: 'Edit' do %>
             <%= icon_for(:edit) %>
           <% end %>
 

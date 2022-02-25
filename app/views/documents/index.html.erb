@@ -31,10 +31,10 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr class="is-link">
-        <td><%= link_to document.title            || '&nbsp;'.html_safe, document %></td>
-        <td><%= link_to document.sender&.name     || '&nbsp;'.html_safe, document %></td>
-        <td><%= link_to document.recipient&.name  || '&nbsp;'.html_safe, document %></td>
-        <td><%= link_to document.acted_at         || '&nbsp;'.html_safe, document %></td>
+        <td><%= link_to document.title            || '&nbsp;'.html_safe, document, title: 'Show' %></td>
+        <td><%= link_to document.sender&.name     || '&nbsp;'.html_safe, document, title: 'Show' %></td>
+        <td><%= link_to document.recipient&.name  || '&nbsp;'.html_safe, document, title: 'Show' %></td>
+        <td><%= link_to document.acted_at         || '&nbsp;'.html_safe, document, title: 'Show' %></td>
       </tr>
     <% end %>
   </tbody>
