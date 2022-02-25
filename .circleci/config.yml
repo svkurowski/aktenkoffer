@@ -1,6 +1,27 @@
-version: 2
-
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.2.4
 jobs:
+  system_tests:
+    working_directory: ~/aktenkoffer
+    docker:
+      - image: cimg/ruby:3.1.0-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: cimg/postgres:14.0
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: aktenkoffer_test
+    steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - checkout
+      - run: bundle
+      - run:
+          name: System tests
+          command: bin/rails test:system
   rubocop:
     docker:
       - image: cimg/ruby:3.1.0-node
@@ -24,6 +45,9 @@ jobs:
 
 workflows:
   version: 2
+  system_tests:
+    jobs:
+      - system_tests
   rubocop:
     jobs:
       - rubocop
