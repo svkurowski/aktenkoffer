@@ -40,7 +40,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
 
-    redirect_to contacts_url, notice: 'Contact was successfully deleted.'
+    redirect_to contacts_url, notice: 'Contact was successfully deleted.', status: :see_other
   end
 
   private

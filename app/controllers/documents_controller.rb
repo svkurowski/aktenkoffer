@@ -58,7 +58,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
 
-    redirect_to documents_url, notice: 'Document was successfully deleted.'
+    redirect_to documents_url, notice: 'Document was successfully deleted.', status: :see_other
   end
 
   private
