@@ -41,7 +41,7 @@ class DocumentsController < ApplicationController
       return
     end
 
-    redirect_to documents_url, notice: 'Document was successfully created.'
+    redirect_to @document, notice: 'Document was successfully created.'
   end
 
   def update
