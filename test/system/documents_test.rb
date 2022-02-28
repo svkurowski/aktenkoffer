@@ -31,6 +31,16 @@ class DocumentsTest < ApplicationSystemTestCase
     assert_text 'Document was successfully created'
   end
 
+  test 'creating one document using drag and drop' do
+    visit documents_url
+
+    target = page.find('body')
+    target.drop(file_fixture('example.pdf'))
+
+    # Currently there is no notification for creation success
+    assert_link 'Edit'
+  end
+
   test 'updating a document' do
     visit documents_url
     click_on 'Show', match: :first
