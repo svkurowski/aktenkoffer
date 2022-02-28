@@ -45,5 +45,5 @@
 
 <%= file_drop_overlay(multiple: true) %>
 <%= form_with scope: :documents, url: api_documents_path, class: 'document-form is-hidden' do |f| %>
-  <%= f.file_field :original_files, multiple: true, class: 'file-input', data: { 'submit-on-drop': true } %>
+  <%= f.file_field :original_files, multiple: true, include_hidden: false, class: 'file-input', data: { 'submit-on-drop': true } %>
 <% end %>
