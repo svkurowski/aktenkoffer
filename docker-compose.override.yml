@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  web:
+    build:
+      target: dev
+    environment:
+      RAILS_ENV: development
+      RACK_ENV: development
+      HOME_CONTACT_ID:
+    volumes:
+      - .:/myapp

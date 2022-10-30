@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  web:
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: production
+      RACK_ENV: production
+      SECRET_KEY_BASE:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_BUCKET:
+      AWS_REGION:
+      HOME_CONTACT_ID:
+      LANG: en_US.UTF-8
+      RAILS_LOG_TO_STDOUT: enabled
+      RAILS_SERVE_STATIC_FILES: enabled
