@@ -180,6 +180,7 @@ GEM
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    open3 (0.1.1)
     orm_adapter (0.5.0)
     parallel (1.21.0)
     parser (3.1.0.0)
@@ -329,6 +330,7 @@ DEPENDENCIES
   gutentag (~> 2.5)
   jsbundling-rails
   kaminari
+  open3 (~> 0.1.1)
   pg (>= 0.18, < 2.0)
   puma (~> 5.6)
   rails (~> 7.0.2)
