@@ -37,6 +37,9 @@ gem 'bootsnap', require: false
 # Browser detection
 gem 'browser', '~> 4.2'
 
+# Running other processes
+gem 'open3', '~> 0.1.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
