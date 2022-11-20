@@ -1,5 +1,10 @@
 version: "3.9"
 services:
+  webdriver:
+    image: selenium/standalone-chrome:4.6.0-20221104
+    shm_size: 2gb
+    ports:
+      - 7900:7900
   web:
     build:
       target: dev
@@ -7,5 +12,6 @@ services:
       RAILS_ENV: development
       RACK_ENV: development
       HOME_CONTACT_ID:
+      WEB_DRIVER_URL: http://webdriver:4444
     volumes:
       - .:/myapp
