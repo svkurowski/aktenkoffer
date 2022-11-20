@@ -1,7 +1,9 @@
 FROM ruby:3.1.0 AS base
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Add yarn repo
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg -o /root/yarn-pubkey.gpg && apt-key add /root/yarn-pubkey.gpg
+RUN wget -q -O - https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
 
 # Install OS packages
@@ -23,6 +25,11 @@ RUN chmod +x /usr/bin/entrypoint.sh
 FROM base AS dev
 
 WORKDIR /myapp
+
+# Install Chrome for tests
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/chrome.list
+RUN apt-get update && apt-get -y install google-chrome-stable
 
 RUN yarn install
 RUN bundle install

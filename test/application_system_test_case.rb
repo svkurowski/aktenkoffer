@@ -1,7 +1,19 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  DRIVER = ['0', 'false'].include?(ENV["HEADLESS"]&.downcase) ? :chrome : :headless_chrome
+  DRIVER = :chrome
+  if ['0', 'false'].include?(ENV["HEADLESS"]&.downcase)
+    DRIVER = :headless_chrome
+  end
+  options = {}
+  if not ENV["WEB_DRIVER_URL"].nil?
+    Capybara.server_host = "0.0.0.0"
+    Capybara.app_host = "http://#{ENV.fetch("HOSTNAME")}:#{Capybara.server_port}"
+    options = {
+      browser: :remote,
+      url: ENV["WEB_DRIVER_URL"]
+    }
+  end
 
-  driven_by :selenium, using: DRIVER, screen_size: [1400, 1400]
+  driven_by :selenium, using: DRIVER, screen_size: [1400, 1400], options: options
 end
