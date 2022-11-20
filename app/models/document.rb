@@ -12,6 +12,8 @@ class Document < ApplicationRecord
   has_one_attached :original_file
   after_commit :analyze_original_file_later
 
+  scope :needs_original_fily_analysis, -> { where(content: nil) }
+
   def acted_at
     received_at || sent_at || created_at.to_date
   end

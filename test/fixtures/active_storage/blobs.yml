@@ -1,3 +1,4 @@
 # Read about ActiveStorage fixtures at http://api.rubyonrails.org/classes/ActiveStorage/FixtureSet.html
 
 original_file_one_blob: <%= ActiveStorage::FixtureSet.blob filename: 'example.pdf' %>
+original_file_two_blob: <%= ActiveStorage::FixtureSet.blob filename: 'example.pdf' %>
