@@ -15,7 +15,7 @@
     <div class="dropdown-menu" id="<%= dropdown_id %>" role="menu">
         <div class="dropdown-content">
         <div class="dropdown-item">
-            <%= form.text_field "#{field}_filter", data: {'select-contact-target': 'filterInput', 'action': 'input->select-contact#filterChange'}, class: 'input is-small', placeholder: 'Filter contacts...' %>
+            <%= form.text_field "#{field}_filter", data: {'select-contact-target': 'filterInput', 'action': 'input->select-contact#filterChange'}, class: 'input is-small', placeholder: 'Filter contacts...', autocomplete: :off %>
         </div>
         <hr class="dropdown-divider">
         <%= turbo_frame_tag dom_id(model, "#{field}_options"), class: 'contents', data: {'select-contact-target': 'contactOptionsFrame'} do %>
