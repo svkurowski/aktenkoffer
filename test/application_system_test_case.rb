@@ -1,9 +1,9 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  DRIVER = :chrome
+  DRIVER = :firefox
   if ['0', 'false'].include?(ENV["HEADLESS"]&.downcase)
-    DRIVER = :headless_chrome
+    DRIVER = :headless_firefox
   end
   options = {}
   if not ENV["WEB_DRIVER_URL"].nil?
