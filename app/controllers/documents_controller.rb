@@ -41,7 +41,7 @@ class DocumentsController < ApplicationController
       return
     end
 
-    redirect_to @document, notice: 'Document was successfully created.'
+    redirect_to @document, notice: t('.success')
   end
 
   def update
@@ -52,13 +52,13 @@ class DocumentsController < ApplicationController
       return
     end
 
-    redirect_to @document, notice: 'Document was successfully updated.'
+    redirect_to @document, notice: t('.success')
   end
 
   def destroy
     @document.destroy
 
-    redirect_to documents_url, notice: 'Document was successfully deleted.', status: :see_other
+    redirect_to documents_url, notice: t('.success'), status: :see_other
   end
 
   private

@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
       return
     end
 
-    redirect_to contacts_url, notice: 'Contact was successfully created.'
+    redirect_to contacts_url, notice: t('.success')
   end
 
   def update
@@ -34,13 +34,13 @@ class ContactsController < ApplicationController
       return
     end
 
-    redirect_to contacts_url, notice: 'Contact was successfully updated.'
+    redirect_to contacts_url, notice: t('.success')
   end
 
   def destroy
     @contact.destroy
 
-    redirect_to contacts_url, notice: 'Contact was successfully deleted.', status: :see_other
+    redirect_to contacts_url, notice: t('.success'), status: :see_other
   end
 
   private

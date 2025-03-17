@@ -25,7 +25,7 @@ class APIKeysController < ApplicationController
     @api_key = APIKey.new(api_key_params.merge(secret: @secret))
 
     if @api_key.save
-      flash.now[:notice] = 'API key was successfully created.'
+      flash.now[:notice] = t('.success')
       render :create
     else
       render :new, status: :unprocessable_entity
@@ -35,7 +35,7 @@ class APIKeysController < ApplicationController
   # PATCH/PUT /api_keys/1
   def update
     if @api_key.update(api_key_params)
-      redirect_to @api_key, notice: 'API key was successfully updated.'
+      redirect_to @api_key, notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class APIKeysController < ApplicationController
   # DELETE /api_keys/1
   def destroy
     @api_key.destroy
-    redirect_to api_keys_url, notice: 'API key was successfully destroyed.'
+    redirect_to api_keys_url, notice: t('.success')
   end
 
   private

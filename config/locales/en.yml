@@ -30,4 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  api_keys:
+    create:
+      success: "API key was successfully created."
+    update:
+      success: "API key was successfully updated."
+    destroy:
+      success: "API key was successfully deleted."
+  contacts:
+    create:
+      success: "Contact was successfully created."
+    update:
+      success: "Contact was successfully updated."
+    destroy:
+      success: "Contact was successfully deleted."
+  documents:
+    create:
+      success: "Document was successfully created."
+    update:
+      success: "Document was successfully updated."
+    destroy:
+      success: "Document was successfully deleted."

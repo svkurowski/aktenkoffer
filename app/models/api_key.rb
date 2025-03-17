@@ -6,7 +6,7 @@ class APIKey < ApplicationRecord
   validates :description, presence: true
 
   validate do |record|
-    record.errors.add(:secret, :blank) unless record.public_send('secret_digest').present?
+    record.errors.add(:secret, :blank) unless record.secret_digest.present?
   end
 
   validates :secret, length: { is: SECRET_LENGTH }, allow_blank: true
