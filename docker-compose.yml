@@ -6,6 +6,7 @@ services:
     environment:
       POSTGRES_PASSWORD: password
   web:
+    image: svkurowski/aktenkoffer:latest
     build:
       context: .
       target: prod
