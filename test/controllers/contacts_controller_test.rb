@@ -3,6 +3,9 @@ require 'test_helper'
 class ContactsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @contact = contacts(:one)
+    @unused_contact = contacts(:unused)
+
+    login()
   end
 
   test 'should get index' do
@@ -16,16 +19,18 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create contact' do
+    new_contact = Contact.new address: 'A completely new address', name: 'A completely new name'
+
     assert_difference('Contact.count') do
-      post contacts_url, params: { contact: { address: @contact.address, name: @contact.name } }
+      post contacts_url, params: { contact: { address: new_contact.address, name: new_contact.name } }
     end
 
-    assert_redirected_to contact_url(Contact.last)
-  end
+    assert_match /successfully created/, flash[:notice]
+    assert_redirected_to contacts_url
 
-  test 'should show contact' do
-    get contact_url(@contact)
-    assert_response :success
+    newest_contact = Contact.order(:created_at).last
+    assert_equal new_contact.address, newest_contact.address
+    assert_equal new_contact.name, newest_contact.name
   end
 
   test 'should get edit' do
@@ -35,12 +40,13 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update contact' do
     patch contact_url(@contact), params: { contact: { address: @contact.address, name: @contact.name } }
-    assert_redirected_to contact_url(@contact)
+
+    assert_redirected_to contacts_url
   end
 
   test 'should destroy contact' do
     assert_difference('Contact.count', -1) do
-      delete contact_url(@contact)
+      delete contact_url(@unused_contact)
     end
 
     assert_redirected_to contacts_url
