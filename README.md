@@ -63,7 +63,22 @@ $ bin/rails server
 
 ## Testing
 
-We use system tests to avoid regressions:
+We use unit, controller and integration tests to avoid regressions:
+
+```sh
+$ bin/rails test
+Running 13 tests in a single process (parallelization threshold is 50)
+Run options: --seed 28269
+
+# Running:
+
+.............
+
+Finished in 2.059265s, 6.3129 runs/s, 12.1403 assertions/s.
+13 runs, 25 assertions, 0 failures, 0 errors, 0 skips
+```
+
+We also ensure the app works end-to-end using system tests:
 
 ```sh
 $ bin/rails test:system # use HEADLESS=false to disable headless mode
