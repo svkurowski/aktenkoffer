@@ -5,7 +5,7 @@ jobs:
   unit_tests:
     working_directory: ~/aktenkoffer
     docker:
-      - image: cimg/ruby:3.1
+      - image: cimg/ruby:3.1-node
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
