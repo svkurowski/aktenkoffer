@@ -9,8 +9,8 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.lis
 # Install OS packages
 RUN apt-get update -qq && apt-get install -y --no-install-recommends nodejs yarn postgresql-client poppler-utils
 
-# Install bundler
-RUN gem install bundler
+# Install bundler and foreman
+RUN gem install bundler foreman
 
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
@@ -32,16 +32,18 @@ RUN bundle install
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/dev"]
 
 FROM base AS prod
+
+ENV BUNDLE_WITHOUT='development test'
 
 WORKDIR /myapp
 
 COPY . /myapp
 
 RUN yarn install --production --frozen-lockfile
-RUN bundle install --without development test
+RUN bundle install
 
 RUN RAILS_ENV=production SECRET_KEY_BASE=fake-secret DATABASE_URL=postgresql:does_not_exist \
         bundle exec rails assets:precompile
@@ -49,4 +51,4 @@ RUN RAILS_ENV=production SECRET_KEY_BASE=fake-secret DATABASE_URL=postgresql:doe
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["foreman", "start"]
