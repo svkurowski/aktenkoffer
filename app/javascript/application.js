@@ -13,10 +13,12 @@ import './elements/tagInputs';
 import './pages/documents';
 import NavBarController from './controllers/nav_bar_controller';
 import SelectContactController from './controllers/select_contact_controller';
+import PairedContactsController from './controllers/paired_contacts_controller';
 
 (() => {
   ActiveStorage.start();
   window.Stimulus = Application.start();
   window.Stimulus.register('nav-bar', NavBarController);
   window.Stimulus.register('select-contact', SelectContactController);
+  window.Stimulus.register('paired-contacts', PairedContactsController);
 })();

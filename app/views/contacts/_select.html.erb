@@ -1,6 +1,6 @@
 <% url_options = { action: (model.respond_to?(:new_record?) && model.new_record?) ? :new : :edit } %>
-<div data-controller="select-contact" data-select-contact-update-url-value="<%= polymorphic_url(model, url_options) %>" data-select-contact-target="dropdown" class="dropdown is-fullwidth is-select">
-    <% dropdown_id = dom_id(model, "#{field}_select_dropdown") %>
+<div id="<%= form.field_id(field, 'select') %>" data-controller="select-contact" data-select-contact-update-url-value="<%= polymorphic_url(model, url_options) %>" data-select-contact-target="dropdown" class="dropdown is-fullwidth is-select select-contact">
+    <% dropdown_id = form.field_id(field, 'select_dropdown') %>
     <div class="dropdown-trigger">
         <%= form.hidden_field "#{field}_id", data: {'select-contact-target': 'selectedValueField'} %>
         <button data-action="click->select-contact#toggle" title="Select <%= model.class.human_attribute_name(field) %>" class="button" aria-haspopup="true" aria-controls="<%= dropdown_id %>">

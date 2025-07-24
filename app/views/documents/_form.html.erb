@@ -35,17 +35,21 @@
     </div>
   </div>
 
-  <div class="field">
-    <%= f.label :sender_id, 'Sender', class: 'label' %>
-    <div class="control is-expanded">
-      <%= render 'contacts/select', form: f, model: document, field: :sender, contacts: sender_options %>
+  <div data-controller="paired-contacts"
+       data-paired-contacts-home-contact-id-value="<%= home_contact&.id %>"
+       data-paired-contacts-select-contact-outlet=".select-contact">
+    <div class="field">
+      <%= f.label :sender_id, 'Sender', class: 'label' %>
+      <div class="control is-expanded">
+        <%= render 'contacts/select', form: f, model: document, field: :sender, contacts: sender_options %>
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <%= f.label :recipient_id, 'Recipient', class: 'label' %>
-    <div class="control is-expanded">
-      <%= render 'contacts/select', form: f, model: document, field: :recipient, contacts: recipient_options %>
+    <div class="field">
+      <%= f.label :recipient_id, 'Recipient', class: 'label' %>
+      <div class="control is-expanded">
+        <%= render 'contacts/select', form: f, model: document, field: :recipient, contacts: recipient_options %>
+      </div>
     </div>
   </div>
 

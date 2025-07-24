@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ContactsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @contact = contacts(:one)
+    @contact = contacts(:home)
     @unused_contact = contacts(:unused)
 
     login()

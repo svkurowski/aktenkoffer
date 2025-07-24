@@ -2,11 +2,12 @@
 
 one:
   title: MyString
-  sender: one
-  recipient: two
+  sender: two
+  recipient: home
   sent_at: 2018-11-26
   received_at: 2018-11-25
   content: null
 
 two:
+  title: 2nd document
   content: MyContent

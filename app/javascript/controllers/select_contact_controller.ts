@@ -1,5 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
+export type ContactSelectedEvent = CustomEvent<{ contactId: string; }> & { detail: { contactId: string } };
+
 type FrameElement = HTMLElement & { src: string };
 
 export default class SelectContactController extends Controller {
@@ -46,6 +48,32 @@ export default class SelectContactController extends Controller {
     }
   }
 
+  public selectContactById(contactId: string): void {
+    const option = this.optionTargets.find(opt => opt.dataset.value === contactId);
+    if (!option) {
+      throw new Error(`Could not find contact option with id ${contactId}`);
+    }
+
+    this.selectedValueFieldTarget.value = contactId;
+
+    this.selectedLabelTarget.innerHTML = option.innerHTML;
+
+    this.optionTargets
+      .filter(e => e !== option)
+      .forEach(e => e.classList.remove(SelectContactController.activeDropdownItemClass));
+    option.classList.add(SelectContactController.activeDropdownItemClass);
+
+    const event: ContactSelectedEvent = new CustomEvent('contact:selected', {
+      bubbles: true,
+      detail: { contactId },
+    });
+    this.element.dispatchEvent(event);
+  }
+
+  public selectedContactId(): string | undefined {
+    return this.selectedValueFieldTarget.value !== '' ? this.selectedValueFieldTarget.value : undefined;
+  }
+
   public select(event: Event & { target: HTMLElement }): void {
     event.preventDefault();
 
@@ -62,6 +90,11 @@ export default class SelectContactController extends Controller {
     targetOption.classList.add(SelectContactController.activeDropdownItemClass);
 
     this.closeDropdown();
+
+    this.element.dispatchEvent(new CustomEvent('contact:selected', {
+      bubbles: true,
+      detail: { contactId: selectedValue },
+    }));
   }
 
   private isDropdownOpen(): boolean {

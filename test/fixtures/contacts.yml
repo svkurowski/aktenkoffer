@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+home:
   name: My partner and me
 
 two:
@@ -16,4 +16,3 @@ unused:
     645, Do not send Street,
     Kingston, New York 12401
     United States
-
