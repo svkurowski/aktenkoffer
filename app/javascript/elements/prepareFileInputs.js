@@ -9,10 +9,10 @@ document.addEventListener('turbo:load', () => {
     const label = fileElement.querySelector('.file-name');
 
     if (!fileInput.files.length) {
-      label.innerHTML = 'No file chosen';
+      label.textContent = 'No file chosen';
       return;
     }
 
-    label.innerHTML = fileInput.files[0].name;
+    label.textContent = fileInput.files[0].name;
   });
 });
