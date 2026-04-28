@@ -24,7 +24,7 @@ gem 'aws-sdk-s3', require: false
 gem 'kaminari'
 
 # User authentication
-gem 'devise', '~> 4.9.4'
+gem 'devise', '~> 5.0.3'
 
 # Tagging
 gem 'gutentag', '~> 2.5'
