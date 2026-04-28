@@ -76,8 +76,8 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      result = params.require(:document)
-                     .permit(:original_file, :title, :sender_id, :recipient_id, :sent_at, :received_at, :tag_names)
+      result = params
+               .expect(document: [:original_file, :title, :sender_id, :recipient_id, :sent_at, :received_at, :tag_names])
       result[:tag_names] = result[:tag_names]&.split(',')
       result
     end
