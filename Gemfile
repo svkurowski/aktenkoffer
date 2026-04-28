@@ -4,7 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.4.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 7.2.3'
+# Pin minitest to 5.x (minitest 6 has breaking API changes incompatible with Rails 7.2)
+gem 'minitest', '~> 5.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use the Puma web server [https://github.com/puma/puma]
