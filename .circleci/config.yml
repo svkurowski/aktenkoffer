@@ -16,7 +16,9 @@ jobs:
           POSTGRES_DB: aktenkoffer_test
     steps:
       - checkout
-      - run: bundle
+      - run:
+          name: Bundle Install
+          command: bundle install --jobs=1
       - run:
           name: Unit tests
           command: bin/rails test
@@ -36,7 +38,9 @@ jobs:
       - browser-tools/install-firefox
       - browser-tools/install-geckodriver
       - checkout
-      - run: bundle
+      - run:
+          name: Bundle Install
+          command: bundle install --jobs=1
       - run:
           name: System tests
           command: bin/rails test:system
@@ -45,7 +49,9 @@ jobs:
       - image: cimg/ruby:3.4-node
     steps:
       - checkout
-      - run: bundle
+      - run:
+          name: Bundle Install
+          command: bundle install --jobs=1
       - run:
           name: RuboCop
           command: |
